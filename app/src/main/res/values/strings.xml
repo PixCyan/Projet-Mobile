@@ -16,5 +16,6 @@
     <string name="title_activity_exos_culture">ExosCulture</string>
     <string name="title_activity_choix_table">ChoixTable</string>
     <string name="title_activity_aleatoire">Aleatoire</string>
+    <string name="title_activity_score">Score</string>
 
 </resources>

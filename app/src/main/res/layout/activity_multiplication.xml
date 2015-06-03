@@ -1,20 +1,65 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context="com.example.raffennn.raffennn.Multiplication"
-    android:id="@+id/mult"
-    android:orientation="vertical">
+    android:id="@+id/mult">
 
     <Button
             android:text="Aide"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="aide"/>
+            android:onClick="aide"
+            android:id="@+id/boutonAide"
+            android:layout_alignParentTop="true"/>
+
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/chiffre1"
+            android:layout_below="@+id/boutonAide"
+            android:layout_centerHorizontal="true"
+            android:textSize="20dp"/>
+
+    <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/rep"
+            android:layout_below="@+id/boutonAide"
+            android:layout_toRightOf="@+id/chiffre1"
+            android:layout_centerHorizontal="true"
+            android:textSize="20dp"/>
+
+    <Button
+            android:text="Valider"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="valider"
+            android:layout_alignTop="@+id/butouMenu"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"/>
+
+    <Button
+            android:text="Quitter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="quitter"
+            android:id="@+id/boutonQuitter"
+            android:layout_alignTop="@+id/butouMenu"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"/>
+
+    <Button
+            android:text="Menu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="retourMenu"
+            android:id="@+id/butouMenu"
+            android:enabled="false"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"/>
 
 
-
-
-</LinearLayout>
+</RelativeLayout>

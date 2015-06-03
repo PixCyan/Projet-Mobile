@@ -76,6 +76,10 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.raffennn.raffennn.ExercicesMaths" />
         </activity>
+        <activity
+            android:name=".Score"
+            android:label="@string/title_activity_score" >
+        </activity>
     </application>
 
 </manifest>
