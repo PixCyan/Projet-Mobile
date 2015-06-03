@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.raffennn.raffennn" >
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".Jeux"
+            android:label="@string/title_activity_jeux" >
+        </activity>
+        <activity
+            android:name=".Lgin"
+            android:label="@string/title_activity_lgin" >
+        </activity>
+        <activity
+            android:name=".Sinscrir"
+            android:label="@string/title_activity_sinscrir" >
+        </activity>
+        <activity
+            android:name=".Sinscrire"
+            android:label="@string/title_activity_sinscrire" >
+        </activity>
+        <activity
+            android:name=".Exercices"
+            android:label="@string/title_activity_exercices" >
+        </activity>
+        <activity
+            android:name=".Addition"
+            android:label="@string/title_activity_addition"
+            android:parentActivityName=".ExercicesMaths" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.raffennn.raffennn.ExercicesMaths" />
+        </activity>
+        <activity
+            android:name=".Login"
+            android:label="@string/title_activity_login" >
+        </activity>
+        <activity
+            android:name=".Multiplication"
+            android:label="@string/title_activity_multiplication"
+            android:parentActivityName=".ExercicesMaths" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.raffennn.raffennn.ExercicesMaths" />
+        </activity>
+        <activity
+            android:name=".ExercicesMaths"
+            android:label="@string/title_activity_exercices_maths" >
+        </activity>
+        <activity
+            android:name=".ExosCulture"
+            android:label="@string/title_activity_exos_culture" >
+        </activity>
+        <activity
+            android:name=".ChoixTable"
+            android:label="@string/title_activity_choix_table" >
+        </activity>
+        <activity
+            android:name=".Aleatoire"
+            android:label="@string/title_activity_aleatoire"
+            android:parentActivityName=".ExercicesMaths" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.raffennn.raffennn.ExercicesMaths" />
+        </activity>
+    </application>
+
+</manifest>

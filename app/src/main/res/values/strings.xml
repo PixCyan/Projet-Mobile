@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Raffennn</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_jeux">Jeux</string>
+    <string name="title_activity_lgin">Lgin</string>
+    <string name="title_activity_sinscrir">Sinscrir</string>
+    <string name="title_activity_sinscrire">Sinscrire</string>
+    <string name="title_activity_exercices">Exercices</string>
+    <string name="title_activity_addition">Addition</string>
+    <string name="title_activity_login">Login</string>
+    <string name="title_activity_multiplication">Multiplication</string>
+    <string name="title_activity_exercices_maths">ExercicesMaths</string>
+    <string name="title_activity_exos_culture">ExosCulture</string>
+    <string name="title_activity_choix_table">ChoixTable</string>
+    <string name="title_activity_aleatoire">Aleatoire</string>
+
+</resources>
