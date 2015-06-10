@@ -12,10 +12,10 @@ import java.util.Random;
 
 
 public class Addition extends ActionBarActivity {
-    public static final String FINAL_SCORE = "0";
+    public static String FINAL_SCORE = "0";
     public final static int ADD_REQUEST = 0;
     private static final Random random = new Random();
-    private int nbCalc = 0;
+    private static int nbCalc = 0;
     private int nb1;
     private int nb2;
     private Calculs c;
@@ -53,37 +53,31 @@ public class Addition extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    //TODO valider à revoir
+
     public void valider(View view) {
         TextView view2 = (TextView) findViewById(R.id.rep);
         String test = view2.getText().toString();
         TextView v = (TextView) findViewById(R.id.test1);
         v.setText(test);
 
-        c.compareRes(c.calculAdd(), Integer.parseInt(test));
-
-        Intent intent = new Intent(this, Score.class);
-        String score = Integer.toString(c.getScoreFinal());
-        intent.putExtra(FINAL_SCORE, score);
-        startActivityForResult(intent, ADD_REQUEST);
-
-
-
-        /*
+        if(c.compareRes(c.calculAdd(), Integer.parseInt(view2.getText().toString()))) {
+            c.scorePlus();
+        }
+        nbCalc++;
         if(nbCalc != 3) {
-            Intent intent = new Intent(this, Multiplication.class);
+            Intent intent = new Intent(this, Addition.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent);
         } else {
+            nbCalc = 0;
             Intent intent = new Intent(this, Score.class);
             String score = Integer.toString(c.getScoreFinal());
             intent.putExtra(FINAL_SCORE, score);
             startActivityForResult(intent, ADD_REQUEST);
-            }
-        }*/
+        }
     }
 
-    //TODO aide
+    //TODO aide add
     public void aide(View view) {
 
     }

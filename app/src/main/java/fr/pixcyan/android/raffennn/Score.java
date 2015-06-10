@@ -1,21 +1,22 @@
 package fr.pixcyan.android.raffennn;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 
 
 public class Score extends ActionBarActivity {
-    public static final String FINAL_SCORE = "0";
-
+    private int score = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_score);
 
-        String score = getIntent().getStringExtra(Multiplication.FINAL_SCORE);
+        score = getIntent().getIntExtra(Multiplication.FINAL_SCORE);
         TextView view1 = (TextView) findViewById(R.id.score);
         view1.setText("Score : " + score + "/3");
     }
@@ -41,5 +42,17 @@ public class Score extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void retourMenu(View view) {
+        Intent intent = new Intent(this, Jeux.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
+    }
+
+    public void quitter(View view) {
+        Intent intent = new Intent(this, MainActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
     }
 }

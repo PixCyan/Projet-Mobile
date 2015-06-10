@@ -10,7 +10,7 @@ public class Calculs {
 
     private int nb1;
     private int nb2;
-    private int scoreFinal = 0;
+    private static int scoreFinal = 0;
 
     public Calculs(int nb1, int nb2) {
         this.nb1 = nb1;

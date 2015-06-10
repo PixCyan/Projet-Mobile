@@ -25,7 +25,7 @@
             android:textSize="30dp"/>
 
     <EditText
-            android:text=" "
+            android:text=""
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/rep"
