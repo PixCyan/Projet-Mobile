@@ -1,8 +1,8 @@
-package com.example.raffennn.raffennn;
+package fr.pixcyan.android.raffennn;
 
 import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -11,7 +11,7 @@ import android.view.View;
 public class ExercicesMaths extends ActionBarActivity {
     public final static int CHOIXTABLE_REQUEST = 1;
     public final static int ALEA_REQUEST = 2;
-    public final static  int ADDITION_REQUEST = 3;
+    public final static int ADDITION_REQUEST = 3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

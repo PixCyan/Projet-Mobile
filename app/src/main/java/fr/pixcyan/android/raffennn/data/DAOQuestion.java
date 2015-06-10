@@ -1,10 +1,11 @@
-package data;
+package fr.pixcyan.android.raffennn.data;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
+
 import java.util.ArrayList;
 import java.util.List;
-import android.database.Cursor;
 
 /**
  * TODO
@@ -37,7 +38,7 @@ public class DAOQuestion extends DAOBase {
 
 
     // Données pour la table
-    private static final String[] DATA = new String[] {
+    private static final String[] DATA = new String[]{
             "'Une première question ?', 'bonne réponse', 'mauvaise réponse 1', 'mauvaise réponse 2'",
             "'Une deuxième question ?', 'bonne réponse', 'mauvaise réponse 1', 'mauvaise réponse 2'",
             "'Une troisième question ?', 'bonne réponse', 'mauvaise réponse 1', 'mauvaise réponse 2'"};

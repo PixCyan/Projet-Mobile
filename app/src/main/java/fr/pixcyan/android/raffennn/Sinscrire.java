@@ -1,24 +1,24 @@
-package com.example.raffennn.raffennn;
+package fr.pixcyan.android.raffennn;
 
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
 
-public class Aleatoire extends ActionBarActivity {
+public class Sinscrire extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_aleatoire);
+        setContentView(R.layout.activity_sinscrire);
     }
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_aleatoire, menu);
+        getMenuInflater().inflate(R.menu.menu_sinscrire, menu);
         return true;
     }
 

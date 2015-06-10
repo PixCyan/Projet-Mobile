@@ -1,4 +1,4 @@
-package com.example.raffennn.raffennn;
+package fr.pixcyan.android.raffennn;
 
 
 /**
@@ -19,11 +19,11 @@ public class Calculs {
 
 
     public int caclculMult() {
-        return nb1*nb2;
+        return nb1 * nb2;
     }
 
     public int calculAdd() {
-        return nb1+nb2;
+        return nb1 + nb2;
     }
 
     public void scorePlus() {

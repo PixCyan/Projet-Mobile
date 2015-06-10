@@ -1,4 +1,4 @@
-package data;
+package fr.pixcyan.android.raffennn.data;
 
 /**
  * TODO

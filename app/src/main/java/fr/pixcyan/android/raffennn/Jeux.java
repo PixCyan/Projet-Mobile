@@ -1,12 +1,11 @@
-package com.example.raffennn.raffennn;
+package fr.pixcyan.android.raffennn;
 
 import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.Toast;
 
 
@@ -45,8 +44,8 @@ public class Jeux extends ActionBarActivity {
 
     //@Override
     public void onActivityForResult(int requestCode, int resultCode, Intent Data) {
-        if(requestCode == JEUX_REQUEST) {
-            if(resultCode == RESULT_OK) {
+        if (requestCode == JEUX_REQUEST) {
+            if (resultCode == RESULT_OK) {
                 Toast.makeText(this, "retour ok", Toast.LENGTH_SHORT).show();
                 //EditText editText = (EditText)findViewById(R.id.exercice1_prenom); //TODO voir variable
                 //editText.getText().clear();

@@ -5,7 +5,7 @@ android {
     buildToolsVersion "21.1.2"
 
     defaultConfig {
-        applicationId "com.example.raffennn.raffennn"
+        applicationId "fr.pixcyan.android.raffennn"
         minSdkVersion 15
         targetSdkVersion 21
         versionCode 1

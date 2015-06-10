@@ -1,7 +1,8 @@
-package data;
+package fr.pixcyan.android.raffennn.data;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 /**
@@ -9,7 +10,7 @@ import android.util.Log;
  *
  * @author PixCyan
  */
-public class DBHelper {
+public class DBHelper extends SQLiteOpenHelper {
     // VERSION de la bdd, permet les mises à jour des tables et champs au lancement de l'application
     private static final int VERSION = 3;
 

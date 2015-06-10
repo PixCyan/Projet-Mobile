@@ -1,20 +1,17 @@
-package com.example.raffennn.raffennn;
+package fr.pixcyan.android.raffennn;
 
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.RadioButton;
-import android.widget.TextView;
-
 
 public class QuestionArt extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_question_art);
+        //setContentView(R.layout.activity_question_art);
         miseAJour();
     }
 
@@ -22,7 +19,7 @@ public class QuestionArt extends ActionBarActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_question_art, menu);
+        //getMenuInflater().inflate(R.menu.menu_question_art, menu);
         return true;
     }
 
@@ -43,7 +40,7 @@ public class QuestionArt extends ActionBarActivity {
 
     public void miseAJour() {
 
-        //
+        /*
         TextView questionView = (TextView)findViewById(R.id.question);
         RadioButton bonneReponseView = (RadioButton)findViewById(R.id.bonne_reponse);
         RadioButton mauvaiseReponse1 = (RadioButton)findViewById(R.id.mauvaise_reponse_1);
@@ -51,7 +48,7 @@ public class QuestionArt extends ActionBarActivity {
 
         //
         DAOQuestion questionDAO = new DAOQuestion(this);
-        DAOQuestion.open();
+        questionDAO.open();
 
         //
         //Question question = DAO-question.selectAll().get(1);
@@ -62,8 +59,8 @@ public class QuestionArt extends ActionBarActivity {
         mauvaiseReponse2.setText(question.getMauvaiseReponse2());
 
         //
-        DAOQuestion.close();
-
+        questionDAO.close();
+*/
     }
 
 

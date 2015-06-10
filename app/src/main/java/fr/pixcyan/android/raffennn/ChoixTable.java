@@ -1,29 +1,34 @@
-package com.example.raffennn.raffennn;
+package fr.pixcyan.android.raffennn;
 
 import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.NumberPicker;
 
 
-public class MainActivity extends ActionBarActivity {
-    public final static int JEUX_REQUEST = 1;
-    public final static int LOGIN_REQUEST = 2;
-    public final static int SINSCRIRE_REQUEST = 3;
+public class ChoixTable extends ActionBarActivity {
+    public static final String table = "1";
+    public final static int MULT_REQUEST = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_choix_table);
+        NumberPicker np;
+        np = (NumberPicker) findViewById(R.id.numPicker);
+        np.setMinValue(0);
+        np.setMaxValue(10);
+        np.setWrapSelectorWheel(false);
     }
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
+        getMenuInflater().inflate(R.menu.menu_choix_table, menu);
         return true;
     }
 
@@ -41,22 +46,14 @@ public class MainActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void jeux(View view) {
-        // Création d'une intention
-        Intent intent = new Intent(this, Jeux.class);
-
-        // Lancement de la demande de changement d'activité
-        startActivityForResult(intent, JEUX_REQUEST);
-    }
-
-    //TODO login()
-    public void login(View view) {
-
-    }
-
-    //TODO sinscrire()
-    public void sinscrire(View view) {
-
+    //TODO valider()
+    public void valider(View view) {
+        NumberPicker np = (NumberPicker) findViewById(R.id.numPicker);
+        String value = Integer.toString(np.getValue());
+        //Integer.toString(value);
+        Intent intent = new Intent(this, Multiplication.class);
+        intent.putExtra(table, value);
+        startActivityForResult(intent, MULT_REQUEST);
     }
 
 }

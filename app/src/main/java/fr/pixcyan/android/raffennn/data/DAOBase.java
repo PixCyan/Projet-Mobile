@@ -1,8 +1,8 @@
-package data;
+package fr.pixcyan.android.raffennn.data;
 
 import android.content.Context;
-import android.database.sqlite.SQLiteDatabase;
 import android.database.SQLException;
+import android.database.sqlite.SQLiteDatabase;
 
 /**
  * TODO
@@ -35,7 +35,7 @@ public class DAOBase {
     }
 
     //
-    public SQLiteDatabase getDB(){
+    public SQLiteDatabase getDB() {
         return db;
     }
 }
