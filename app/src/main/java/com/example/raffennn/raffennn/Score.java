@@ -18,7 +18,7 @@ public class Score extends ActionBarActivity {
 
         String score = getIntent().getStringExtra(Multiplication.FINAL_SCORE);
         TextView view1 = (TextView)findViewById(R.id.score);
-        view1.setText(score + "/3");
+        view1.setText("Score : " + score + "/3");
     }
 
 

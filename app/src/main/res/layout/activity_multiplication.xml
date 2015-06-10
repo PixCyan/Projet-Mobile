@@ -16,14 +16,16 @@
             android:layout_alignParentTop="true"/>
 
     <TextView
+            android:text="1 x 1 ="
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/chiffre1"
             android:layout_below="@+id/boutonAide"
             android:layout_centerHorizontal="true"
-            android:textSize="20dp"/>
+            android:textSize="30dp"/>
 
     <EditText
+            android:text=" "
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/rep"
@@ -57,7 +59,6 @@
             android:layout_height="wrap_content"
             android:onClick="retourMenu"
             android:id="@+id/butouMenu"
-            android:enabled="false"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"/>
 

@@ -17,5 +17,6 @@
     <string name="title_activity_choix_table">ChoixTable</string>
     <string name="title_activity_aleatoire">Aleatoire</string>
     <string name="title_activity_score">Score</string>
+    <string name="title_activity_question_art">QuestionArt</string>
 
 </resources>

@@ -1,6 +1,5 @@
 package com.example.raffennn.raffennn;
 
-import java.util.Random;
 
 /**
  * TODO
@@ -12,8 +11,6 @@ public class Calculs {
     private int nb1;
     private int nb2;
     private int scoreFinal = 0;
-    private int res;
-
 
     public Calculs(int nb1, int nb2) {
         this.nb1 = nb1;
@@ -22,19 +19,23 @@ public class Calculs {
 
 
     public int caclculMult() {
-        return res = nb1*nb2;
+        return nb1*nb2;
     }
 
-    public  int calculAdd() {
-        return res = nb1+nb2;
+    public int calculAdd() {
+        return nb1+nb2;
     }
 
-    public void scrorePlus() {
+    public void scorePlus() {
         scoreFinal++;
     }
 
     public int getScoreFinal() {
         return scoreFinal;
+    }
+
+    public boolean compareRes(int a, int b) {
+        return a == b;
     }
 
 }

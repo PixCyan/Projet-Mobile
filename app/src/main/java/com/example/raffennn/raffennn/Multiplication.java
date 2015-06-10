@@ -23,7 +23,7 @@ public class Multiplication extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_multiplication);
-
+        //String score = getIntent().getStringExtra(Multiplication.FINAL_SCORE);
         nb1 = random.nextInt(10);
         nb2 = random.nextInt(10);
         c = new Calculs(nb1, nb2);
@@ -31,11 +31,8 @@ public class Multiplication extends ActionBarActivity {
         TextView view1 = (TextView)findViewById(R.id.chiffre1);
         view1.setText(nb1 + " x " + nb2 + " = ");
 
-
-
-
         /*
-        //Création dynamique
+        //CrÃ©ation dynamique
         for(int i = 0; i < 3; i++) {
             TextView table = new TextView(this);
             table.setText(nb1 + " x " + nb2 + " = ");
@@ -84,7 +81,6 @@ public class Multiplication extends ActionBarActivity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
@@ -92,31 +88,44 @@ public class Multiplication extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    //TODO valider à revoir
+
+    //TODO valider Ã  revoir
     public void valider(View view) {
         TextView view2 = (TextView)findViewById(R.id.rep);
-        int res = Integer.parseInt((String)view2.getText());
-        int res2 = c.caclculMult();
-        if(res == res2) {
-            c.scrorePlus();
-        }
+
+        //c.compareRes(c.calculAdd(), Integer.parseInt(view2.getText.toString()));
+
+        Intent intent = new Intent(this, Score.class);
+        String score = Integer.toString(c.getScoreFinal());
+        intent.putExtra(FINAL_SCORE, score);
+        startActivityForResult(intent, MULT_REQUEST);
+
         /*if(nbCalc != 3) {
             Intent intent = new Intent(this, Multiplication.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent);
-        } else {*/
+        } else {
             Intent intent = new Intent(this, Score.class);
-            int score = c.getScoreFinal();
+            String score = Integer.toString(c.getScoreFinal());
             intent.putExtra(FINAL_SCORE, score);
             startActivityForResult(intent, MULT_REQUEST);
-        //}
+            }
+        }*/
+
     }
+
 
 
     //TODO aide
    public void aide(View view) {
 
    }
+
+    public void retourMenu(View view) {
+        Intent intent = new Intent(this, Jeux.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
+    }
 
     public void quitter(View view) {
         Intent intent = new Intent(this, MainActivity.class);

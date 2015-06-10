@@ -21,20 +21,16 @@
             android:label="@string/title_activity_jeux" >
         </activity>
         <activity
-            android:name=".Lgin"
-            android:label="@string/title_activity_lgin" >
-        </activity>
-        <activity
-            android:name=".Sinscrir"
-            android:label="@string/title_activity_sinscrir" >
+            android:name=".Login"
+            android:label="@string/title_activity_login" >
         </activity>
         <activity
             android:name=".Sinscrire"
             android:label="@string/title_activity_sinscrire" >
         </activity>
         <activity
-            android:name=".Exercices"
-            android:label="@string/title_activity_exercices" >
+            android:name=".ExercicesMaths"
+            android:label="@string/title_activity_exercices_maths" >
         </activity>
         <activity
             android:name=".Addition"
@@ -45,20 +41,12 @@
                 android:value="com.example.raffennn.raffennn.ExercicesMaths" />
         </activity>
         <activity
-            android:name=".Login"
-            android:label="@string/title_activity_login" >
-        </activity>
-        <activity
             android:name=".Multiplication"
             android:label="@string/title_activity_multiplication"
             android:parentActivityName=".ExercicesMaths" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.raffennn.raffennn.ExercicesMaths" />
-        </activity>
-        <activity
-            android:name=".ExercicesMaths"
-            android:label="@string/title_activity_exercices_maths" >
         </activity>
         <activity
             android:name=".ExosCulture"
@@ -79,6 +67,10 @@
         <activity
             android:name=".Score"
             android:label="@string/title_activity_score" >
+        </activity>
+        <activity
+            android:name=".QuestionArt"
+            android:label="@string/title_activity_question_art" >
         </activity>
     </application>
 
