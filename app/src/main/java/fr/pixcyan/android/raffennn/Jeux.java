@@ -55,7 +55,6 @@ public class Jeux extends ActionBarActivity {
         }
     }
 
-    //TODO exoMaths()
     public void exoMaths(View view) {
         // Création d'une intention
         Intent intent = new Intent(this, ExercicesMaths.class);
@@ -64,12 +63,23 @@ public class Jeux extends ActionBarActivity {
         startActivityForResult(intent, EXERCICES_REQUEST);
     }
 
-    //TODO exoCulture()
     public void exoCulture(View view) {
         // Création d'une intention
         Intent intent = new Intent(this, ExosCulture.class);
 
         // Lancement de la demande de changement d'activité
         startActivityForResult(intent, CULTURE_REQUEST);
+    }
+
+    public void retourMenu(View view) {
+        Intent intent = new Intent(this, Jeux.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
+    }
+
+    public void quitter(View view) {
+        Intent intent = new Intent(this, MainActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
     }
 }

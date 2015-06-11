@@ -15,7 +15,7 @@ public class DBHelper extends SQLiteOpenHelper {
     private static final int VERSION = 3;
 
     // NOM de la base
-    private static final String DATABASE_NAME = "database_test_dut_2a";
+    private static final String DATABASE_NAME = "database_test_dut_as";
 
     // TAG pour le log
     private static final String TAG = "DBHelper";
@@ -29,6 +29,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
 
         // Créer la table question
+        db.execSQL(DAOQuestion.DROP_TABLE);
         db.execSQL(DAOQuestion.CREATE_TABLE);
 
         // Insérer les données

@@ -95,14 +95,13 @@ public class Multiplication extends ActionBarActivity {
             c.scorePlus();
         }
         nbCalc++;
-        if(nbCalc != 3) {
+        if(nbCalc != 10) {
             Intent intent = new Intent(this, Multiplication.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent);
         } else {
             nbCalc = 0;
             Intent intent = new Intent(this, Score.class);
-            //String score = Integer.toString(c.getScoreFinal());
             intent.putExtra(FINAL_SCORE, c.getScoreFinal());
             startActivityForResult(intent, MULT_REQUEST);
         }

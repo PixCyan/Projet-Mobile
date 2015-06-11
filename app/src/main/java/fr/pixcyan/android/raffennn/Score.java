@@ -15,10 +15,9 @@ public class Score extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_score);
-
-        score = getIntent().getIntExtra(Multiplication.FINAL_SCORE);
+        score = getIntent().getIntExtra(Multiplication.FINAL_SCORE, 0);
         TextView view1 = (TextView) findViewById(R.id.score);
-        view1.setText("Score : " + score + "/3");
+        view1.setText("Score : " + score + "/10");
     }
 
 

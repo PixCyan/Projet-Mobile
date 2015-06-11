@@ -58,13 +58,16 @@ public class Addition extends ActionBarActivity {
         TextView view2 = (TextView) findViewById(R.id.rep);
         String test = view2.getText().toString();
         TextView v = (TextView) findViewById(R.id.test1);
-        v.setText(test);
+
 
         if(c.compareRes(c.calculAdd(), Integer.parseInt(view2.getText().toString()))) {
             c.scorePlus();
+            v.setText("Correct !");
+        } else {
+
         }
         nbCalc++;
-        if(nbCalc != 3) {
+        if(nbCalc != 10) {
             Intent intent = new Intent(this, Addition.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent);

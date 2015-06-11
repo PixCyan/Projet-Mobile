@@ -41,7 +41,6 @@ public class ExercicesMaths extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    //TODO additions()
     public void additions(View view) {
         // Création d'une intention
         Intent intent = new Intent(this, Addition.class);
@@ -49,7 +48,6 @@ public class ExercicesMaths extends ActionBarActivity {
         startActivityForResult(intent, ADDITION_REQUEST);
     }
 
-    //TODO multiplications()
     public void multiplications(View view) {
         // Création d'une intention
         //Intent intent = new Intent(this, ChoixTable.class);
@@ -64,6 +62,18 @@ public class ExercicesMaths extends ActionBarActivity {
         Intent intent = new Intent(this, Aleatoire.class);
         // Lancement de la demande de changement d'activité
         startActivityForResult(intent, ALEA_REQUEST);
+    }
+
+    public void retourMenu(View view) {
+        Intent intent = new Intent(this, Jeux.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
+    }
+
+    public void quitter(View view) {
+        Intent intent = new Intent(this, MainActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
     }
 
 }

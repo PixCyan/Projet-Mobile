@@ -1,12 +1,15 @@
 package fr.pixcyan.android.raffennn;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 
 public class ExosCulture extends ActionBarActivity {
+    private  static final int ART_REQUEST = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +36,23 @@ public class ExosCulture extends ActionBarActivity {
         if (id == R.id.action_settings) {
             return true;
         }
-
         return super.onOptionsItemSelected(item);
+    }
+
+    public void questionArt(View view) {
+        Intent intent = new Intent(this, QuestionArt.class);
+        startActivityForResult(intent, ART_REQUEST);
+    }
+
+    public void retourMenu(View view) {
+        Intent intent = new Intent(this, Jeux.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
+    }
+
+    public void quitter(View view) {
+        Intent intent = new Intent(this, MainActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
     }
 }

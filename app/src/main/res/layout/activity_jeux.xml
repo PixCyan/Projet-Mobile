@@ -28,5 +28,23 @@
         android:layout_below="@+id/titre"
         android:onClick="exoCulture"
         android:width="800dp" />
+    <Button
+            android:text="Quitter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="quitter"
+            android:id="@+id/boutonQuitter"
+            android:layout_alignTop="@+id/butouMenu"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"/>
+
+    <Button
+            android:text="Menu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="retourMenu"
+            android:id="@+id/butouMenu"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"/>
 
 </RelativeLayout>

@@ -39,9 +39,10 @@ public class DAOQuestion extends DAOBase {
 
     // Données pour la table
     private static final String[] DATA = new String[]{
-            "'Une première question ?', 'bonne réponse', 'mauvaise réponse 1', 'mauvaise réponse 2'",
-            "'Une deuxième question ?', 'bonne réponse', 'mauvaise réponse 1', 'mauvaise réponse 2'",
-            "'Une troisième question ?', 'bonne réponse', 'mauvaise réponse 1', 'mauvaise réponse 2'"};
+            "'Qu'elle est la couleur du cheval bleu d'Henri IV ?', 'Bleu', 'Blanc', 'Noir'",
+            "'Qui a peint la Joconde ?', 'Léonard de Vinci', 'Picasso', 'Van Gogh'",
+            "'Quel est le vrai nom de Molière ?', 'Jean-Baptiste Poquelin','Jean-Claude Van Damme', 'Jean Dujardin'",
+            "'Qui est Botticelli ?', 'Un peintre italien','Un célèbre inventeur italien', 'Un sculpteur italien'"};
 
     // retourne une liste de chaînes de caractères représentant les instructions SQL d'insertion de données dans la table
     public static String[] getInsertSQL() {

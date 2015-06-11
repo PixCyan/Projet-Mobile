@@ -11,6 +11,77 @@
     <TextView
             android:text="Question :"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:id="@+id/question"
+            android:textSize="20dp"/>
+
+    <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/rb"
+            android:layout_below="@+id/question">
+
+        <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/bonne_reponse"
+                android:layout_below="@+id/question"/>
+
+        <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/mauvaise_reponse_1"
+                android:layout_below="@+id/bonne_reponse"/>
+
+        <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/mauvaise_reponse_2"
+                android:layout_below="@+id/mauvaise_reponse_1"/>
+    </RadioGroup>
+
+    <Button
+            android:text="Valider"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="valider"
+            android:id="@+id/valider"
+            android:layout_below="@+id/rb"/>
+
+    <Button
+            android:text="Question suivante =>"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="changerQuestion"
+            android:id="@+id/suivant"
+            android:layout_toRightOf="@+id/valider"
+            android:layout_below="@+id/rb"/>
+
+    <TextView
+            android:text=""
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/valider"
+            android:textSize="30dp"
+            android:id="@+id/resultat"/>
+
+    <Button
+            android:text="Quitter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="quitter"
+            android:id="@+id/boutonQuitter"
+            android:layout_alignTop="@+id/butouMenu"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"/>
+
+    <Button
+            android:text="Menu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="retourMenu"
+            android:id="@+id/butouMenu"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"/>
 
 </RelativeLayout>
