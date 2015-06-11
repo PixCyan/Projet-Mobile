@@ -68,7 +68,6 @@ public class QuestionArt extends ActionBarActivity {
         mauvaiseReponse1.setText(question.getMauvaiseReponse1());
         mauvaiseReponse2.setText(question.getMauvaiseReponse2());
 
-
         questionDAO.close();
     }
 

@@ -38,4 +38,8 @@ public class Calculs {
         return a == b;
     }
 
+    public void setScoreFinal(int a) {
+        scoreFinal = a;
+    }
+
 }

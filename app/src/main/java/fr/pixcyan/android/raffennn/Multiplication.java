@@ -6,6 +6,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import java.util.Random;
@@ -24,15 +25,9 @@ public class Multiplication extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_multiplication);
-        nb1 = random.nextInt(10);
-        nb2 = random.nextInt(10);
-        c = new Calculs(nb1, nb2);
+        miseAjour();
 
-        TextView view1 = (TextView) findViewById(R.id.chiffre1);
-        view1.setText(nb1 + " x " + nb2 + " = ");
-
-        /*
-        //Création dynamique
+        /*//Création dynamique
         for(int i = 0; i < 3; i++) {
             TextView table = new TextView(this);
             table.setText(nb1 + " x " + nb2 + " = ");
@@ -87,22 +82,35 @@ public class Multiplication extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    private void miseAjour() {
+        nb1 = random.nextInt(15);
+        nb2 = random.nextInt(15);
+        c = new Calculs(nb1, nb2);
+        TextView view1 = (TextView) findViewById(R.id.chiffre1);
+        view1.setText(nb1 + " x " + nb2 + " = ");
+        EditText editText = (EditText) findViewById(R.id.rep);
+        editText.setText("");
+        TextView view2 = (TextView) findViewById(R.id.test1);
+        view2.setText("");
+    }
 
     public void valider(View view) {
         TextView view2 = (TextView) findViewById(R.id.rep);
+        TextView v = (TextView) findViewById(R.id.test1);
 
         if(c.compareRes(c.caclculMult(), Integer.parseInt(view2.getText().toString()))) {
-            c.scorePlus();
+            c.scorePlus();    v.setText("Correct !");
+        } else {
+            v.setText("Incorrect !");
         }
         nbCalc++;
         if(nbCalc != 10) {
-            Intent intent = new Intent(this, Multiplication.class);
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            startActivity(intent);
+            miseAjour();
         } else {
             nbCalc = 0;
             Intent intent = new Intent(this, Score.class);
             intent.putExtra(FINAL_SCORE, c.getScoreFinal());
+            c.setScoreFinal(0);
             startActivityForResult(intent, MULT_REQUEST);
         }
     }

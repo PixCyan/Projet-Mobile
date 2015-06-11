@@ -34,6 +34,15 @@
             android:layout_centerHorizontal="true"
             android:textSize="20dp"/>
 
+    <TextView
+            android:text=""
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/test1"
+            android:layout_below="@+id/chiffre1"
+            android:layout_centerHorizontal="true"
+            android:textSize="30dp"/>
+
     <Button
             android:text="Valider"
             android:layout_width="wrap_content"
