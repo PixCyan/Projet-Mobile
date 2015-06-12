@@ -7,7 +7,6 @@ package fr.pixcyan.android.raffennn.data;
  */
 public class Compte {
 
-    private int id;
     private String login;
     private String mdp;
     private int score_mult;
@@ -29,9 +28,6 @@ public class Compte {
     }
 
 
-    public int getId() {
-        return id;
-    }
 
     public String getLogin() {
         return login;
@@ -55,10 +51,6 @@ public class Compte {
 
     public int getScore_capitales() {
         return score_capitales;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public void setLogin(String login) {

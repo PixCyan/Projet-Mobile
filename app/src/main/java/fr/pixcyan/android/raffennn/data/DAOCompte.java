@@ -18,7 +18,6 @@ public class DAOCompte extends DAOBase {
     public static final String TABLE_COMPTE = "COMPTE";
 
     // Table: QUESTION
-    public static final String COL_ID = "id";
     public static final String LOGIN = "login";
     public static final String MDP = "mot_de_passe";
     public static final String SCORE_MATHS_MULT = "score_multiplication";
@@ -28,20 +27,20 @@ public class DAOCompte extends DAOBase {
 
     // retourne une chaîne de caractères représentant une instruction SQL de création de la table compte
     public static final String CREATE_TABLE =
-            "CREATE TABLE " + TABLE_COMPTE + " (" +
-                    COL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                    LOGIN + " TEXT NOT NULL, " +
-                    MDP + " TEXT NOT NULL, " +
-                    SCORE_MATHS_MULT + " TEXT NOT NULL, " +
-                    SCORE_MATHS_ADD + " TEXT NOT NULL);" +
-                    SCORE_CULT_ART + " TEXT NOT NULL, " +
-                    SCORE_CULT_CAPITALES + " TEXT NOT NULL, ";
+            "CREATE TABLE " + TABLE_COMPTE + "(" +
+                    LOGIN + " VARCHAR(20) PRIMARY KEY, " +
+                    MDP + " VARCHAR(15) NOT NULL, " +
+                    SCORE_MATHS_MULT + " NUMERIC(2) NOT NULL, " +
+                    SCORE_MATHS_ADD + " NUMERIC(2) NOT NULL, " +
+                    SCORE_CULT_ART + " NUMERIC(2) NOT NULL, " +
+                    SCORE_CULT_CAPITALES + " NUMERIC(2) NOT NULL); ";
 
     // retourne une chaîne de caractères représentant une instruction SQL de création de la table compte
     public static final String DROP_TABLE = "DROP TABLE IF EXISTS " + TABLE_COMPTE + ";";
 
     private static final String[] DATA = new String[]{
-            "'TestMan', 'test', '0', '0', '0', '0'"};
+            "'admin', 'admin', '0', '0', '0', '0'",
+            "'test', 'test', '0', '0', '0', '0'"};
 
     //Constructeur
     public DAOCompte(Context context) {
@@ -53,8 +52,8 @@ public class DAOCompte extends DAOBase {
         String insertSQL = "INSERT INTO " + TABLE_COMPTE + "("
                 + LOGIN + ", "
                 + MDP + ", "
-                + SCORE_MATHS_MULT + ","
-                + SCORE_MATHS_ADD + ","
+                + SCORE_MATHS_MULT + ", "
+                + SCORE_MATHS_ADD + ", "
                 + SCORE_CULT_ART + ", "
                 + SCORE_CULT_CAPITALES + ") VALUES ";
 
@@ -99,18 +98,18 @@ public class DAOCompte extends DAOBase {
         values.put(SCORE_CULT_CAPITALES, compte.getScore_capitales());
 
         // Insertion de l'objet dans la BD via le ContentValues et l'identifiant
-        return getDB().update(TABLE_COMPTE, values, COL_ID + " = " + compte.getId(), null);
+        return getDB().update(TABLE_COMPTE, values, LOGIN + " = " + compte.getLogin(), null);
     }
 
-    public int removeByID(int id) {
+    public int removeByLogin(String login) {
 
-        //Suppression d'une question de la BD à partir de l'ID
-        return getDB().delete(TABLE_COMPTE, COL_ID + " = " + id, null);
+        //Suppression d'une question de la BD à partir du login
+        return getDB().delete(TABLE_COMPTE, LOGIN + " = " + login, null);
     }
 
     public int remove(Compte compte) {
 
-        return removeByID(compte.getId());
+        return removeByLogin(compte.getLogin());
     }
 
     public List<Compte> selectAll() {
@@ -121,21 +120,19 @@ public class DAOCompte extends DAOBase {
         return cursorToListCompte(cursor);
     }
 
-    public List<Compte> selectCompte(String login, String mdp) {
-        Cursor cursor = getDB().rawQuery("SELECT * FROM " + TABLE_COMPTE + "WHERE"+ LOGIN +"="+ login + "AND"+ MDP +"=" + mdp, null);
-        return cursorToListCompte(cursor);
+    public boolean compteExist(String login) {
+        Cursor cursor = getDB().rawQuery("SELECT * FROM " + TABLE_COMPTE + " WHERE "+ LOGIN +" = '"+ login +"'",  new String[]{login});
+        if(!cursor.moveToFirst()) {
+            return false;
+        }
+        return true;
     }
 
-    public Compte retrieveByID(int id) {
-        Cursor cursor = getDB().rawQuery("SELECT * FROM " + TABLE_COMPTE + " WHERE " + COL_ID + "=?", new String[]{Integer.toString(id)});
-        return cursorToFirstCompte(cursor);
-    }
 
     //Cette méthode permet de convertir un cursor en une liste de questions
     private List<Compte> cursorToListCompte(Cursor cursor) {
 
         // Récupére l'index des champs
-        int indexId = cursor.getColumnIndex(COL_ID);
         int indexLogin = cursor.getColumnIndex(LOGIN);
         int indexMDP = cursor.getColumnIndex(MDP);
         int indexScoreMult = cursor.getColumnIndex(SCORE_MATHS_MULT);
@@ -151,7 +148,6 @@ public class DAOCompte extends DAOBase {
 
             // Création d'un compte
             Compte compte = new Compte();
-            compte.setId(cursor.getInt(indexId));
             compte.setLogin(cursor.getString(indexLogin));
             compte.setMdp(cursor.getString(indexMDP));
             //TODO verifier les suivantes :
@@ -172,7 +168,6 @@ public class DAOCompte extends DAOBase {
     private Compte cursorToFirstCompte(Cursor cursor) {
 
         // Récupére l'index des champs
-        int indexId = cursor.getColumnIndex(COL_ID);
         int indexLogin = cursor.getColumnIndex(LOGIN);
         int indexMDP = cursor.getColumnIndex(MDP);
         int indexScoreMult = cursor.getColumnIndex(SCORE_MATHS_MULT);
@@ -190,7 +185,6 @@ public class DAOCompte extends DAOBase {
 
             // Création d'un compte
             compte = new Compte();
-            compte.setId(cursor.getInt(indexId));
             compte.setLogin(cursor.getString(indexLogin));
             compte.setMdp(cursor.getString(indexMDP));
             //TODO verifier les suivantes :

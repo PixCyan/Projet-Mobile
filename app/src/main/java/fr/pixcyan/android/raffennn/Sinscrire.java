@@ -7,6 +7,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 import fr.pixcyan.android.raffennn.data.Compte;
 import fr.pixcyan.android.raffennn.data.DAOCompte;
 
@@ -44,40 +45,28 @@ public class Sinscrire extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void valider() {
+    public void valider(View view) {
         EditText login = (EditText) findViewById(R.id.login);
         EditText mdp = (EditText) findViewById(R.id.mdp);
-        if(login == null || mdp == null) {
-            //TODO afficher message erreur
+        if(login.getText().toString().matches("")|| mdp.getText().toString().matches("")) {
+            Toast.makeText(this, "Un ou plusieurs chmaps sont vides", Toast.LENGTH_SHORT).show();
         } else {
             DAOCompte compteDAO = new DAOCompte(this);
             compteDAO.open();
-            if(compteDAO.selectCompte(login.getText().toString(), mdp.getText().toString()).isEmpty()) {
+            //compteDAO.selectCompte(login.getText().toString(), mdp.getText().toString()).isEmpty()
+            if(compteDAO.compteExist(login.getText().toString())) {
                 Compte compte = new Compte(login.getText().toString(), mdp.getText().toString(), 0, 0, 0, 0);
                 compteDAO.insert(compte);
+                compteDAO.close();
+                //TODO message confirmation
+                Toast.makeText(this, "Le compte a été créé", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(this, MainActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
             } else {
-                //TODO message erreur
+                Toast.makeText(this, "Le compte existe déjà", Toast.LENGTH_SHORT).show();
             }
-
-            compteDAO.close();
-
-            /*
-            DAOQuestion questionDAO = new DAOQuestion(this);
-        Question qTest = new Question("Quelle oeuvre a peint Jacques-Louis David ?", "Le serment du jeu de paume", "Les trois Grâces", "Le radeau de la Méduse");
-        questionDAO.open();
-        questionDAO.insert(qTest);
-
-        //Question question = questionDAO.selectAll().get(1);
-        Question question = questionDAO.getQuestionRandom();
-        questionView.setText(question.getQuestion());
-        bonneReponseView.setText(question.getBonneReponse());
-        mauvaiseReponse1.setText(question.getMauvaiseReponse1());
-        mauvaiseReponse2.setText(question.getMauvaiseReponse2());
-
-        questionDAO.close();
-             */
         }
-
     }
 
 

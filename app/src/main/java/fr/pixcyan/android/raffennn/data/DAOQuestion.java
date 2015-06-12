@@ -52,7 +52,6 @@ public class DAOQuestion extends DAOBase {
                 + COL_MAUVAISE_REPONSE_1 + ", "
                 + COL_MAUVAISE_REPONSE_2 + ") VALUES ";
 
-        //
         String[] liste = new String[DATA.length];
         int i = 0;
         for (String questionReponse : DATA) {

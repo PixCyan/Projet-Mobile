@@ -53,7 +53,8 @@ public class MainActivity extends ActionBarActivity {
 
     //TODO sinscrire()
     public void sinscrire(View view) {
-
+        Intent intent = new Intent(this, Sinscrire.class);
+        startActivityForResult(intent, SINSCRIRE_REQUEST);
     }
 
 }

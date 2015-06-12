@@ -30,13 +30,16 @@ public class DBHelper extends SQLiteOpenHelper {
 
         // Créer la table question
         db.execSQL(DAOQuestion.DROP_TABLE);
-        //db.execSQL(DAOCompte.DROP_TABLE); A VOIR
+        //db.execSQL(DAOCompte.DROP_TABLE);
         db.execSQL(DAOQuestion.CREATE_TABLE);
         db.execSQL(DAOCompte.CREATE_TABLE);
 
         // Insérer les données
-        for (String insert : DAOQuestion.getInsertSQL()) {
-            db.execSQL(insert);
+        for (String insertQ : DAOQuestion.getInsertSQL()) {
+            db.execSQL(insertQ);
+        }
+        for (String insertC : DAOCompte.getInsertSQL()) {
+            db.execSQL(insertC);
         }
 
     }
