@@ -26,6 +26,17 @@
             android:layout_toLeftOf="@+id/butouMenu"
             android:layout_toStartOf="@+id/butouMenu"
             android:clickable="true"/>
+    <TextView
+            android:text="Art"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textArt"
+            android:layout_below="@+id/Qart"
+            android:layout_alignLeft="@+id/Qart"
+            android:layout_alignStart="@+id/Qart"
+            android:layout_marginLeft="42dp"
+            android:layout_marginStart="42dp"
+            android:textColor="#ff000000"/>
 
     <ImageView
             android:layout_width="wrap_content"
@@ -37,6 +48,17 @@
             android:layout_toRightOf="@+id/butouMenu"
             android:layout_toEndOf="@+id/butouMenu"
             android:clickable="true"/>
+
+    <TextView
+            android:text="Capitales"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textCapitales"
+            android:layout_below="@+id/Qcapitale"
+            android:layout_alignLeft="@+id/boutonQuitter"
+            android:layout_alignStart="@+id/boutonQuitter"
+            android:textColor="#ff000000"/>
+
     <Button
             android:text="Quitter"
             android:layout_width="wrap_content"

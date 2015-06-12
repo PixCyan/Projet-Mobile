@@ -1,19 +1,16 @@
 package fr.pixcyan.android.raffennn;
 
-import android.content.Intent;
-import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
+import android.widget.EditText;
+import android.widget.TextView;
 import fr.pixcyan.android.raffennn.data.Compte;
 import fr.pixcyan.android.raffennn.data.DAOCompte;
 
 
-public class ExosCulture extends ActionBarActivity {
-    private  static final int ART_REQUEST = 0;
-    private  static final int CAP_REQUEST = 0;
-
+public class MesScores extends ActionBarActivity {
     public static final String COMPTE = "compte";
     private String login;
     private DAOCompte daoCompte;
@@ -22,11 +19,8 @@ public class ExosCulture extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_exos_culture);
+        setContentView(R.layout.activity_mes_scores);
         login = getIntent().getStringExtra(Login.COMPTE);
-        this.daoCompte = new DAOCompte(this);
-
-        final String login = getIntent().getStringExtra(Login.COMPTE);
         if (login != null) {
             this.daoCompte.open();
             this.compte = this.daoCompte.getCompte(login);
@@ -34,13 +28,29 @@ public class ExosCulture extends ActionBarActivity {
         } else {
             this.compte = null;
         }
+
+        //Création dynamique
+        for(int i = 0; i < 4; i++) {
+            TextView table = new TextView(this);
+            table.setText(nb1 + " x " + nb2 + " = ");
+            table.setWidth(50);
+            table.setHeight(50);
+
+            EditText rep = new EditText(this);
+            rep.setText(" ? ");
+            rep.setLayoutParams(params);
+            rep.setTextSize(10);
+            layout.addView(table);
+            layout.addView(rep);
+        }
+
     }
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_exos_culture, menu);
+        getMenuInflater().inflate(R.menu.menu_mes_scores, menu);
         return true;
     }
 
@@ -55,30 +65,7 @@ public class ExosCulture extends ActionBarActivity {
         if (id == R.id.action_settings) {
             return true;
         }
+
         return super.onOptionsItemSelected(item);
-    }
-
-    public void capitale(View view) {
-        Intent intent = new Intent(this, PaysCapitale.class);
-        intent.putExtra(COMPTE, login);
-        startActivityForResult(intent, CAP_REQUEST);
-    }
-
-    public void questionArt(View view) {
-        Intent intent = new Intent(this, QuestionArt.class);
-        intent.putExtra(COMPTE, login);
-        startActivityForResult(intent, ART_REQUEST);
-    }
-
-    public void retourMenu(View view) {
-        Intent intent = new Intent(this, Jeux.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        startActivity(intent);
-    }
-
-    public void quitter(View view) {
-        Intent intent = new Intent(this, MainActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        startActivity(intent);
     }
 }

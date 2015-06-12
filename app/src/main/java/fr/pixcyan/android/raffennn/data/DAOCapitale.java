@@ -33,10 +33,10 @@ public class DAOCapitale extends DAOBase  {
     private static final String[] DATA = new String[]{
             "'France', 'Paris'",
             "'Allemagne', 'Berlin'",
-            "'Grèce', 'Athènes'",
+            "'Grèce', 'Athenes'",
             "'Suisse', 'Berne'",
             "'Argentine', 'Buenos Aires'",
-            "'Chine', 'Pékin'",
+            "'Chine', 'Pekin'",
             "'Inde', 'New Delhi'",
             "'Chili', 'Santiago'",
             "'Suède', 'Stockholm'",

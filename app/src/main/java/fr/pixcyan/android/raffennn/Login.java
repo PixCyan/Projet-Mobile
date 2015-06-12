@@ -42,7 +42,6 @@ public class Login extends ActionBarActivity {
         if (id == R.id.action_settings) {
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 
@@ -56,6 +55,7 @@ public class Login extends ActionBarActivity {
             compteDAO.open();
             if (compteDAO.compteExiste(login.getText().toString())) {
                 final Compte compte = compteDAO.getCompte(login.getText().toString());
+                compteDAO.close();
                 if (compte.getMdp().equals(mdp.getText().toString())) {
                     Intent intent = new Intent(this, Jeux.class);
                     intent.putExtra(COMPTE, compte.getLogin());
@@ -66,7 +66,6 @@ public class Login extends ActionBarActivity {
             } else {
                 Toast.makeText(this, "Le compte n'existe pas", Toast.LENGTH_SHORT).show();
             }
-            compteDAO.close();
         }
     }
 

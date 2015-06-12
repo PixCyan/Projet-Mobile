@@ -46,6 +46,7 @@
     <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:inputType="textPassword"
             android:id="@+id/mdp"
             android:width="150dp"
             android:layout_below="@+id/login"

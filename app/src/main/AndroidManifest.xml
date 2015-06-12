@@ -76,6 +76,10 @@
             android:name=".PaysCapitale"
             android:label="@string/title_activity_pays_capitale" >
         </activity>
+        <activity
+            android:name=".MesScores"
+            android:label="@string/title_activity_mes_scores" >
+        </activity>
     </application>
 
 </manifest>

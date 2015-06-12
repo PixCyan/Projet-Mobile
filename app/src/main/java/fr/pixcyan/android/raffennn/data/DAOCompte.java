@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteStatement;
 import android.util.Log;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -124,8 +125,8 @@ public class DAOCompte extends DAOBase {
     }
 
     public Compte getCompte(String login) {
-        final Cursor cursor = getDB().rawQuery("SELECT login FROM " + TABLE_COMPTE + " WHERE " + LOGIN + " = ?", new String[]{login});
-        return cursor.getCount() > 0 ? this.cursorToFirstCompte(cursor) : null;
+        final Cursor cursor = getDB().rawQuery("SELECT * FROM " + TABLE_COMPTE + " WHERE " + LOGIN + " = ?", new String[]{login});
+        return this.cursorToFirstCompte(cursor);
     }
 
     public boolean compteExiste(String login) {
@@ -161,7 +162,6 @@ public class DAOCompte extends DAOBase {
             Compte compte = new Compte();
             compte.setLogin(cursor.getString(indexLogin));
             compte.setMdp(cursor.getString(indexMDP));
-            //TODO verifier les suivantes :
             compte.setScore_mult(cursor.getInt(indexScoreMult));
             compte.setScore_add(cursor.getInt(indexScoreAdd));
             compte.setScore_art(cursor.getInt(indexScoreArt));
@@ -186,7 +186,6 @@ public class DAOCompte extends DAOBase {
         int indexScoreArt = cursor.getColumnIndex(SCORE_CULT_ART);
         int indexScoreCap = cursor.getColumnIndex(SCORE_CULT_CAPITALES);
 
-
         // Declaration d'une compte
         Compte compte = null;
 
@@ -198,7 +197,6 @@ public class DAOCompte extends DAOBase {
             compte = new Compte();
             compte.setLogin(cursor.getString(indexLogin));
             compte.setMdp(cursor.getString(indexMDP));
-            //TODO verifier les suivantes :
             compte.setScore_mult(cursor.getInt(indexScoreMult));
             compte.setScore_add(cursor.getInt(indexScoreAdd));
             compte.setScore_art(cursor.getInt(indexScoreArt));

@@ -20,5 +20,6 @@
     <string name="title_activity_question_art">QuestionArt</string>
     <string name="title_activity_capitale">Capitale</string>
     <string name="title_activity_pays_capitale">PaysCapitale</string>
+    <string name="title_activity_mes_scores">MesScores</string>
 
 </resources>

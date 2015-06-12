@@ -12,11 +12,14 @@ public class ExercicesMaths extends ActionBarActivity {
     public final static int CHOIXTABLE_REQUEST = 1;
     public final static int ALEA_REQUEST = 2;
     public final static int ADDITION_REQUEST = 3;
+    public static final String COMPTE = "compte";
+    private String login;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_exercices_maths);
+        login = getIntent().getStringExtra(Login.COMPTE);
     }
 
 
@@ -42,17 +45,14 @@ public class ExercicesMaths extends ActionBarActivity {
     }
 
     public void additions(View view) {
-        // Création d'une intention
         Intent intent = new Intent(this, Addition.class);
-        // Lancement de la demande de changement d'activité
+        intent.putExtra(COMPTE, login);
         startActivityForResult(intent, ADDITION_REQUEST);
     }
 
     public void multiplications(View view) {
-        // Création d'une intention
-        //Intent intent = new Intent(this, ChoixTable.class);
         Intent intent = new Intent(this, Multiplication.class);
-        // Lancement de la demande de changement d'activité
+        intent.putExtra(COMPTE, login);
         startActivityForResult(intent, CHOIXTABLE_REQUEST);
     }
 
@@ -60,7 +60,7 @@ public class ExercicesMaths extends ActionBarActivity {
     public void aleatoire(View view) {
         // Création d'une intention
         Intent intent = new Intent(this, Aleatoire.class);
-        // Lancement de la demande de changement d'activité
+        intent.putExtra(COMPTE, login);
         startActivityForResult(intent, ALEA_REQUEST);
     }
 

@@ -1,5 +1,7 @@
 package fr.pixcyan.android.raffennn;
 
+import android.app.AlertDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -13,17 +15,34 @@ import android.widget.TextView;
 import fr.pixcyan.android.raffennn.data.*;
 
 public class QuestionArt extends ActionBarActivity {
+    public static final String COMPTE = "compte";
     private static final String SCORE_FINAL = "score";
     private static final int QUESTION_REQUEST = 0;
+    private String login;
     private int score = 0;
     private int count = 0;
+
+    private DAOCompte daoCompte;
+    private Compte compte;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_question_art);
         Button suivant = (Button) findViewById(R.id.suivant);
-        suivant.setVisibility(suivant.INVISIBLE);
+        suivant.setVisibility(Button.INVISIBLE);
+        login = getIntent().getStringExtra(Login.COMPTE);
+        this.daoCompte = new DAOCompte(this);
+
+        final String login = getIntent().getStringExtra(Login.COMPTE);
+        if (login != null) {
+            this.daoCompte.open();
+            this.compte = this.daoCompte.getCompte(login);
+            this.daoCompte.close();
+        } else {
+            this.compte = null;
+        }
+
         miseAJour();
     }
 
@@ -91,6 +110,12 @@ public class QuestionArt extends ActionBarActivity {
             textValidation.setText("Perdu !");
         }
         if(count == 10) {
+            if(compte != null) {
+                this.compte.setScore_capitales(score);
+                this.daoCompte.open();
+                this.daoCompte.update(this.compte);
+                this.daoCompte.close();
+            }
             count = 0;
             Intent intent = new Intent(this, Score.class);
             intent.putExtra(SCORE_FINAL, score);
@@ -99,6 +124,14 @@ public class QuestionArt extends ActionBarActivity {
             Button suivant = (Button) findViewById(R.id.suivant);
             suivant.setVisibility(suivant.VISIBLE);
         }
+    }
+
+    public void aide(View view) {
+        final Context context = this;
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setMessage("Cochez la réponse juste.").setTitle("Aide");
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 
     public void retourMenu(View view) {

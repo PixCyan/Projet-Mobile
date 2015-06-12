@@ -16,11 +16,14 @@ public class Jeux extends ActionBarActivity {
     public final static int JEUX_REQUEST = 0;
     public final static int EXERCICES_REQUEST = 1;
     public final static int CULTURE_REQUEST = 2;
+    public static final String COMPTE = "compte";
+    private String login;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_jeux);
+        login = getIntent().getStringExtra(Login.COMPTE);
     }
 
 
@@ -45,23 +48,10 @@ public class Jeux extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    //@Override
-    public void onActivityForResult(int requestCode, int resultCode, Intent Data) {
-        if (requestCode == JEUX_REQUEST) {
-            if (resultCode == RESULT_OK) {
-                Toast.makeText(this, "retour ok", Toast.LENGTH_SHORT).show();
-                //EditText editText = (EditText)findViewById(R.id.exercice1_prenom); //TODO voir variable
-                //editText.getText().clear();
-            } else if (resultCode == RESULT_CANCELED) {
-                Toast.makeText(this, "retour cancel/back", Toast.LENGTH_SHORT).show();
-            }
-        }
-    }
-
     public void exoMaths(View view) {
         // Création d'une intention
         Intent intent = new Intent(this, ExercicesMaths.class);
-
+        intent.putExtra(COMPTE, login);
         // Lancement de la demande de changement d'activité
         startActivityForResult(intent, EXERCICES_REQUEST);
     }
@@ -69,8 +59,14 @@ public class Jeux extends ActionBarActivity {
     public void exoCulture(View view) {
         // Création d'une intention
         Intent intent = new Intent(this, ExosCulture.class);
-
+        intent.putExtra(COMPTE, login);
         // Lancement de la demande de changement d'activité
+        startActivityForResult(intent, CULTURE_REQUEST);
+    }
+
+    public void mesScores(View view) {
+        Intent intent = new Intent(this, ExosCulture.class);
+        intent.putExtra(COMPTE, login);
         startActivityForResult(intent, CULTURE_REQUEST);
     }
 
