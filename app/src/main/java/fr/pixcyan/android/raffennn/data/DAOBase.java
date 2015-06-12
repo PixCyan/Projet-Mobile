@@ -9,7 +9,7 @@ import android.database.sqlite.SQLiteDatabase;
  *
  * @author PixCyan
  */
-public class DAOBase {
+public abstract class DAOBase {
 
     // TAG pour le log
     private static final String TAG = "DBAdapter";

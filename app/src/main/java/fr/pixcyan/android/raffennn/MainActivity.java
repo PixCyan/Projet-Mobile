@@ -42,19 +42,19 @@ public class MainActivity extends ActionBarActivity {
     }
 
     public void jeux(View view) {
-        Intent intent = new Intent(this, Jeux.class);
+        Intent intent = new Intent(this, JeuxActivity.class);
         startActivityForResult(intent, JEUX_REQUEST);
     }
 
     //TODO login()
     public void login(View view) {
-        Intent intent = new Intent(this, Login.class);
+        Intent intent = new Intent(this, LoginActivity.class);
         startActivityForResult(intent, LOGIN_REQUEST);
     }
 
     //TODO sinscrire()
     public void sinscrire(View view) {
-        Intent intent = new Intent(this, Sinscrire.class);
+        Intent intent = new Intent(this, SinscrireActivity.class);
         startActivityForResult(intent, SINSCRIRE_REQUEST);
     }
 

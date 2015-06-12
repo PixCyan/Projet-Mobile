@@ -18,7 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class QuestionArt extends ActionBarActivity {
+public class QuestionArtActivity extends ActionBarActivity {
     public static final String COMPTE = "compte";
     private static final String SCORE_FINAL = "score";
     private static final int QUESTION_REQUEST = 0;
@@ -37,10 +37,10 @@ public class QuestionArt extends ActionBarActivity {
         setContentView(R.layout.activity_question_art);
         Button suivant = (Button) findViewById(R.id.suivant);
         suivant.setVisibility(Button.INVISIBLE);
-        login = getIntent().getStringExtra(Login.COMPTE);
+        login = getIntent().getStringExtra(LoginActivity.COMPTE);
         this.daoCompte = new DAOCompte(this);
 
-        final String login = getIntent().getStringExtra(Login.COMPTE);
+        final String login = getIntent().getStringExtra(LoginActivity.COMPTE);
         if (login != null) {
             this.daoCompte.open();
             this.compte = this.daoCompte.getCompte(login);
@@ -109,7 +109,7 @@ public class QuestionArt extends ActionBarActivity {
         TextView textValidation = (TextView) findViewById(R.id.resultat);
         RadioGroup radioGroup = (RadioGroup) findViewById(R.id.rg);
         String checkedButtonValue = ((RadioButton)findViewById(radioGroup.getCheckedRadioButtonId())).getText().toString();
-        if(question.getBonneReponse().equals(checkedButtonValue)) {
+        if(question.estBonneReponse(checkedButtonValue)) {
             textValidation.setText("Bravo !");
             score++;
         } else {
@@ -117,13 +117,13 @@ public class QuestionArt extends ActionBarActivity {
         }
         if(count == 10) {
             if(compte != null) {
-                this.daoCompte.open();
-                this.compte.setScore_art(score);
-                this.daoCompte.update(this.compte);
-                this.daoCompte.close();
+                daoCompte.open();
+                compte.setScore_art(Math.max(score, compte.getScore_art()));
+                daoCompte.update(this.compte);
+                daoCompte.close();
             }
             count = 0;
-            Intent intent = new Intent(this, Score.class);
+            Intent intent = new Intent(this, ScoreActivity.class);
             intent.putExtra(SCORE_FINAL, score);
             intent.putExtra(COMPTE, login);
             startActivityForResult(intent, QUESTION_REQUEST);
@@ -142,7 +142,7 @@ public class QuestionArt extends ActionBarActivity {
     }
 
     public void retourMenu(View view) {
-        Intent intent = new Intent(this, Jeux.class);
+        Intent intent = new Intent(this, JeuxActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         intent.putExtra(COMPTE, login);
         startActivity(intent);

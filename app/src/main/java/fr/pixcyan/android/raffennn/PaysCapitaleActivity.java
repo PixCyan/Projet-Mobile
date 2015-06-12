@@ -12,17 +12,17 @@ import android.widget.*;
 import fr.pixcyan.android.raffennn.data.*;
 
 
-public class PaysCapitale extends ActionBarActivity {
+public class PaysCapitaleActivity extends ActionBarActivity {
     public static final String COMPTE = "compte";
     private static final String SCORE_FINAL = "score";
     private static final int CAPITALE_REQUEST = 0;
     private String login;
-    private String repJuste;
     private int count = 0;
     private int score = 0;
 
     private DAOCompte daoCompte;
     private Compte compte;
+    private Capitale capitale;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,10 +30,10 @@ public class PaysCapitale extends ActionBarActivity {
         setContentView(R.layout.activity_pays_capitale);
         Button suivant = (Button) findViewById(R.id.suivant);
         suivant.setVisibility(Button.INVISIBLE);
-        login = getIntent().getStringExtra(Login.COMPTE);
+        login = getIntent().getStringExtra(LoginActivity.COMPTE);
         this.daoCompte = new DAOCompte(this);
 
-        final String login = getIntent().getStringExtra(Login.COMPTE);
+        final String login = getIntent().getStringExtra(LoginActivity.COMPTE);
         if (login != null) {
             this.daoCompte.open();
             this.compte = this.daoCompte.getCompte(login);
@@ -73,30 +73,29 @@ public class PaysCapitale extends ActionBarActivity {
         TextView paysView = (TextView) findViewById(R.id.pays);
         DAOCapitale capitaleDAO = new DAOCapitale(this);
         capitaleDAO.open();
-        Capitale cap = capitaleDAO.getPaysRandom();
-        paysView.setText(cap.getPays());
-        repJuste = cap.getCapitale();
+        this.capitale = capitaleDAO.getPaysRandom();
+        paysView.setText(this.capitale.getPays());
         capitaleDAO.close();
     }
 
     public void valider(View view) {
         count++;
         EditText cap = (EditText) findViewById(R.id.capitale);
-        if(cap.getText().toString().equals(repJuste)) {
+        if(capitale.estCapitale(cap.getText().toString())) {
             Toast.makeText(this, "Bravo", Toast.LENGTH_SHORT).show();
             score++;
         } else {
-            Toast.makeText(this, "Perdu : " + repJuste, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Perdu : " + capitale.getCapitale(), Toast.LENGTH_SHORT).show();
         }
         if(count == 10) {
             if(compte != null) {
-                this.daoCompte.open();
-                this.compte.setScore_capitales(score);
-                this.daoCompte.update(this.compte);
-                this.daoCompte.close();
+                daoCompte.open();
+                compte.setScore_capitales(Math.max(score, compte.getScore_capitales()));
+                daoCompte.update(this.compte);
+                daoCompte.close();
             }
             count = 0;
-            Intent intent = new Intent(this, Score.class);
+            Intent intent = new Intent(this, ScoreActivity.class);
             Bundle extras = new Bundle();
             extras.putInt(SCORE_FINAL,score);
             extras.putString(COMPTE,login);
@@ -123,7 +122,7 @@ public class PaysCapitale extends ActionBarActivity {
     }
 
     public void retourMenu(View view) {
-        Intent intent = new Intent(this, Jeux.class);
+        Intent intent = new Intent(this, JeuxActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         intent.putExtra(COMPTE, login);
         startActivity(intent);

@@ -1,19 +1,19 @@
 package fr.pixcyan.android.raffennn;
 
+import android.app.AlertDialog;
+import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 import fr.pixcyan.android.raffennn.data.Compte;
 import fr.pixcyan.android.raffennn.data.DAOCompte;
 
 
-public class ExosCulture extends ActionBarActivity {
-    private  static final int ART_REQUEST = 0;
-    private  static final int CAP_REQUEST = 0;
-
+public class MesScoresActivity extends ActionBarActivity {
     public static final String COMPTE = "compte";
     private String login;
     private DAOCompte daoCompte;
@@ -22,11 +22,9 @@ public class ExosCulture extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_exos_culture);
-        login = getIntent().getStringExtra(Login.COMPTE);
+        setContentView(R.layout.activity_mes_scores);
+        login = getIntent().getStringExtra(LoginActivity.COMPTE);
         this.daoCompte = new DAOCompte(this);
-
-        final String login = getIntent().getStringExtra(Login.COMPTE);
         if (login != null) {
             this.daoCompte.open();
             this.compte = this.daoCompte.getCompte(login);
@@ -34,13 +32,32 @@ public class ExosCulture extends ActionBarActivity {
         } else {
             this.compte = null;
         }
+
+        if(compte != null) {
+            TextView table1 = (TextView) findViewById(R.id.sMult);
+            table1.setText("Dernier score multiplication :" + compte.getScore_mult());
+            TextView table2 = (TextView) findViewById(R.id.sAdd);
+            table2.setText("Dernier score addition :" + compte.getScore_add());
+            TextView table3 = (TextView) findViewById(R.id.sArt);
+            table3.setText("Dernier score art :" + compte.getScore_art());
+            TextView table4 = (TextView) findViewById(R.id.sCap);
+            table4.setText("Dernier score capitales :" + compte.getScore_capitales());
+        } else {
+            final Context context = this;
+            AlertDialog.Builder builder = new AlertDialog.Builder(context);
+            builder.setMessage("Aucun résultats trouvés. Vous n'êtes pas connecté ou une erreur s'est produite.").setTitle("Oups !");
+            AlertDialog dialog = builder.create();
+            dialog.show();
+        }
+
+
     }
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_exos_culture, menu);
+        getMenuInflater().inflate(R.menu.menu_mes_scores, menu);
         return true;
     }
 
@@ -58,20 +75,8 @@ public class ExosCulture extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void capitale(View view) {
-        Intent intent = new Intent(this, PaysCapitale.class);
-        intent.putExtra(COMPTE, login);
-        startActivityForResult(intent, CAP_REQUEST);
-    }
-
-    public void questionArt(View view) {
-        Intent intent = new Intent(this, QuestionArt.class);
-        intent.putExtra(COMPTE, login);
-        startActivityForResult(intent, ART_REQUEST);
-    }
-
     public void retourMenu(View view) {
-        Intent intent = new Intent(this, Jeux.class);
+        Intent intent = new Intent(this, JeuxActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         intent.putExtra(COMPTE, login);
         startActivity(intent);

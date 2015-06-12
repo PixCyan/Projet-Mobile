@@ -6,13 +6,9 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
-import fr.pixcyan.android.raffennn.data.Compte;
-import fr.pixcyan.android.raffennn.data.DAOCompte;
-import fr.pixcyan.android.raffennn.data.DBHelper;
 
 
-public class Jeux extends ActionBarActivity {
+public class JeuxActivity extends ActionBarActivity {
     public final static int JEUX_REQUEST = 0;
     public final static int EXERCICES_REQUEST = 1;
     public final static int CULTURE_REQUEST = 2;
@@ -23,7 +19,7 @@ public class Jeux extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_jeux);
-        login = getIntent().getStringExtra(Login.COMPTE);
+        login = getIntent().getStringExtra(LoginActivity.COMPTE);
     }
 
 
@@ -50,7 +46,7 @@ public class Jeux extends ActionBarActivity {
 
     public void exoMaths(View view) {
         // Création d'une intention
-        Intent intent = new Intent(this, ExercicesMaths.class);
+        Intent intent = new Intent(this, ExercicesMathsActivity.class);
         intent.putExtra(COMPTE, login);
         // Lancement de la demande de changement d'activité
         startActivityForResult(intent, EXERCICES_REQUEST);
@@ -58,14 +54,14 @@ public class Jeux extends ActionBarActivity {
 
     public void exoCulture(View view) {
         // Création d'une intention
-        Intent intent = new Intent(this, ExosCulture.class);
+        Intent intent = new Intent(this, ExosCultureActivity.class);
         intent.putExtra(COMPTE, login);
         // Lancement de la demande de changement d'activité
         startActivityForResult(intent, CULTURE_REQUEST);
     }
 
     public void mesScores(View view) {
-        Intent intent = new Intent(this, MesScores.class);
+        Intent intent = new Intent(this, MesScoresActivity.class);
         intent.putExtra(COMPTE, login);
         startActivityForResult(intent, CULTURE_REQUEST);
     }

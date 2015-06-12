@@ -24,6 +24,10 @@ public class Question {
         };
     }
 
+    public boolean estBonneReponse(String reponse) {
+        return getBonneReponse().equals(reponse);
+    }
+
     public int getId() {
         return id;
     }

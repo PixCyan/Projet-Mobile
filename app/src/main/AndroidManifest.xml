@@ -17,67 +17,63 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Jeux"
+            android:name=".JeuxActivity"
             android:label="@string/title_activity_jeux" >
         </activity>
         <activity
-            android:name=".Login"
+            android:name=".LoginActivity"
             android:label="@string/title_activity_login" >
         </activity>
         <activity
-            android:name=".Sinscrire"
+            android:name=".SinscrireActivity"
             android:label="@string/title_activity_sinscrire" >
         </activity>
         <activity
-            android:name=".ExercicesMaths"
+            android:name=".ExercicesMathsActivity"
             android:label="@string/title_activity_exercices_maths" >
         </activity>
         <activity
-            android:name=".Addition"
+            android:name=".AdditionActivity"
             android:label="@string/title_activity_addition"
-            android:parentActivityName=".ExercicesMaths" >
+            android:parentActivityName=".ExercicesMathsActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="fr.pixcyan.android.raffennn.ExercicesMaths" />
+                android:value=".ExercicesMathsActivity" />
         </activity>
         <activity
-            android:name=".Multiplication"
+            android:name=".MultiplicationActivity"
             android:label="@string/title_activity_multiplication"
-            android:parentActivityName=".ExercicesMaths" >
+            android:parentActivityName=".ExercicesMathsActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="fr.pixcyan.android.raffennn.ExercicesMaths" />
+                android:value=".ExercicesMathsActivity" />
         </activity>
         <activity
-            android:name=".ExosCulture"
+            android:name=".ExosCultureActivity"
             android:label="@string/title_activity_exos_culture" >
         </activity>
         <activity
-            android:name=".ChoixTable"
-            android:label="@string/title_activity_choix_table" >
-        </activity>
-        <activity
-            android:name=".Aleatoire"
+            android:name=".AleatoireActivity"
             android:label="@string/title_activity_aleatoire"
-            android:parentActivityName=".ExercicesMaths" >
+            android:parentActivityName=".ExercicesMathsActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="fr.pixcyan.android.raffennn.ExercicesMaths" />
+                android:value=".ExercicesMathsActivity" />
         </activity>
         <activity
-            android:name=".Score"
+            android:name=".ScoreActivity"
             android:label="@string/title_activity_score" >
         </activity>
         <activity
-            android:name=".QuestionArt"
+            android:name=".QuestionArtActivity"
             android:label="@string/title_activity_question_art" >
         </activity>
         <activity
-            android:name=".PaysCapitale"
+            android:name=".PaysCapitaleActivity"
             android:label="@string/title_activity_pays_capitale" >
         </activity>
         <activity
-            android:name=".MesScores"
+            android:name=".MesScoresActivity"
             android:label="@string/title_activity_mes_scores" >
         </activity>
     </application>

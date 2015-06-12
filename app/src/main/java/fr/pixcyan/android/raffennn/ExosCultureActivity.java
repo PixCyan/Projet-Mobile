@@ -6,30 +6,27 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.TextView;
 import fr.pixcyan.android.raffennn.data.Compte;
 import fr.pixcyan.android.raffennn.data.DAOCompte;
 
 
-public class Score extends ActionBarActivity {
+public class ExosCultureActivity extends ActionBarActivity {
+    private  static final int ART_REQUEST = 0;
+    private  static final int CAP_REQUEST = 0;
+
     public static final String COMPTE = "compte";
-    private static final String SCORE_FINAL = "score";
-    private int score = 0;
+    private String login;
     private DAOCompte daoCompte;
     private Compte compte;
-    private String login;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_score);
-        Bundle extras = getIntent().getExtras();
-        score = extras.getInt(SCORE_FINAL);
-        login = extras.getString(COMPTE);
-        TextView view1 = (TextView) findViewById(R.id.score);
-        view1.setText("Score : " + score + "/10");
+        setContentView(R.layout.activity_exos_culture);
+        login = getIntent().getStringExtra(LoginActivity.COMPTE);
         this.daoCompte = new DAOCompte(this);
-        final String login = getIntent().getStringExtra(Login.COMPTE);
+
+        final String login = getIntent().getStringExtra(LoginActivity.COMPTE);
         if (login != null) {
             this.daoCompte.open();
             this.compte = this.daoCompte.getCompte(login);
@@ -43,7 +40,7 @@ public class Score extends ActionBarActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_score, menu);
+        getMenuInflater().inflate(R.menu.menu_exos_culture, menu);
         return true;
     }
 
@@ -58,12 +55,23 @@ public class Score extends ActionBarActivity {
         if (id == R.id.action_settings) {
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 
+    public void capitale(View view) {
+        Intent intent = new Intent(this, PaysCapitaleActivity.class);
+        intent.putExtra(COMPTE, login);
+        startActivityForResult(intent, CAP_REQUEST);
+    }
+
+    public void questionArt(View view) {
+        Intent intent = new Intent(this, QuestionArtActivity.class);
+        intent.putExtra(COMPTE, login);
+        startActivityForResult(intent, ART_REQUEST);
+    }
+
     public void retourMenu(View view) {
-        Intent intent = new Intent(this, Jeux.class);
+        Intent intent = new Intent(this, JeuxActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         intent.putExtra(COMPTE, login);
         startActivity(intent);

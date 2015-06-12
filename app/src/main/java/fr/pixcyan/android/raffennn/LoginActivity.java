@@ -12,7 +12,7 @@ import fr.pixcyan.android.raffennn.data.Compte;
 import fr.pixcyan.android.raffennn.data.DAOCompte;
 
 
-public class Login extends ActionBarActivity {
+public class LoginActivity extends ActionBarActivity {
 
     public static final String COMPTE = "compte";
     public final static int JEUX_REQUEST = 1;
@@ -57,7 +57,7 @@ public class Login extends ActionBarActivity {
                 final Compte compte = compteDAO.getCompte(login.getText().toString());
                 compteDAO.close();
                 if (compte.getMdp().equals(mdp.getText().toString())) {
-                    Intent intent = new Intent(this, Jeux.class);
+                    Intent intent = new Intent(this, JeuxActivity.class);
                     intent.putExtra(COMPTE, compte.getLogin());
                     startActivityForResult(intent, JEUX_REQUEST);
                 } else {

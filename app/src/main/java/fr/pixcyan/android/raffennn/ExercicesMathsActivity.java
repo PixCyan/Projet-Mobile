@@ -8,7 +8,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 
-public class ExercicesMaths extends ActionBarActivity {
+public class ExercicesMathsActivity extends ActionBarActivity {
     public final static int CHOIXTABLE_REQUEST = 1;
     public final static int ALEA_REQUEST = 2;
     public final static int ADDITION_REQUEST = 3;
@@ -19,7 +19,7 @@ public class ExercicesMaths extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_exercices_maths);
-        login = getIntent().getStringExtra(Login.COMPTE);
+        login = getIntent().getStringExtra(LoginActivity.COMPTE);
     }
 
 
@@ -45,13 +45,13 @@ public class ExercicesMaths extends ActionBarActivity {
     }
 
     public void additions(View view) {
-        Intent intent = new Intent(this, Addition.class);
+        Intent intent = new Intent(this, AdditionActivity.class);
         intent.putExtra(COMPTE, login);
         startActivityForResult(intent, ADDITION_REQUEST);
     }
 
     public void multiplications(View view) {
-        Intent intent = new Intent(this, Multiplication.class);
+        Intent intent = new Intent(this, MultiplicationActivity.class);
         intent.putExtra(COMPTE, login);
         startActivityForResult(intent, CHOIXTABLE_REQUEST);
     }
@@ -59,13 +59,13 @@ public class ExercicesMaths extends ActionBarActivity {
     //TODO aleatoire()
     public void aleatoire(View view) {
         // Création d'une intention
-        Intent intent = new Intent(this, Aleatoire.class);
+        Intent intent = new Intent(this, AleatoireActivity.class);
         intent.putExtra(COMPTE, login);
         startActivityForResult(intent, ALEA_REQUEST);
     }
 
     public void retourMenu(View view) {
-        Intent intent = new Intent(this, Jeux.class);
+        Intent intent = new Intent(this, JeuxActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         intent.putExtra(COMPTE, login);
         startActivity(intent);

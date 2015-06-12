@@ -21,6 +21,10 @@ public class Capitale {
         this.capitale = capitale;
     }
 
+    public boolean estCapitale(String capitale) {
+        return this.capitale.equals(capitale);
+    }
+
     public void setPays(String pays) {
         this.pays = pays;
     }

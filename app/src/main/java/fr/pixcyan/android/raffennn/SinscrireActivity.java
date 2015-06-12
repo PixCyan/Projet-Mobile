@@ -12,7 +12,7 @@ import fr.pixcyan.android.raffennn.data.Compte;
 import fr.pixcyan.android.raffennn.data.DAOCompte;
 
 
-public class Sinscrire extends ActionBarActivity {
+public class SinscrireActivity extends ActionBarActivity {
     private static final String LOGIN = "login";
     private static final String MDP = "mot_de_passe";
 
