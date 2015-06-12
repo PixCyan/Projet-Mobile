@@ -67,16 +67,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/imgScores"
+            android:onClick="mesScores"
             android:background="@drawable/scores"
             android:layout_below="@+id/textMaths"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="49dp"/>
+            android:layout_marginTop="49dp"
+            android:clickable="true"/>
 
     <TextView
             android:text="Mes scores"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="mesScores"
             android:layout_below="@+id/imgScores"
             android:layout_centerHorizontal="true"
             android:textColor="#ff000000"/>

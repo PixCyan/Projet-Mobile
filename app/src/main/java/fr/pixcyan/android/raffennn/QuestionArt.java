@@ -76,11 +76,8 @@ public class QuestionArt extends ActionBarActivity {
         RadioButton mauvaiseReponse2 = (RadioButton)findViewById(R.id.mauvaise_reponse_2);
 
         DAOQuestion questionDAO = new DAOQuestion(this);
-        Question qTest = new Question("Quelle oeuvre a peint Jacques-Louis David ?", "Le serment du jeu de paume", "Les trois Grâces", "Le radeau de la Méduse");
         questionDAO.open();
-        questionDAO.insert(qTest);
 
-        //Question question = questionDAO.selectAll().get(1);
         Question question = questionDAO.getQuestionRandom();
         questionView.setText(question.getQuestion());
         bonneReponseView.setText(question.getBonneReponse());
@@ -93,7 +90,7 @@ public class QuestionArt extends ActionBarActivity {
 
     public void changerQuestion(View view) {
         Button suivant = (Button) findViewById(R.id.suivant);
-        suivant.setVisibility(suivant.INVISIBLE);
+        suivant.setVisibility(Button.INVISIBLE);
         TextView textValidation = (TextView) findViewById(R.id.resultat);
         textValidation.setText("");
         miseAJour();
@@ -111,14 +108,15 @@ public class QuestionArt extends ActionBarActivity {
         }
         if(count == 10) {
             if(compte != null) {
-                this.compte.setScore_capitales(score);
                 this.daoCompte.open();
+                this.compte.setScore_art(score);
                 this.daoCompte.update(this.compte);
                 this.daoCompte.close();
             }
             count = 0;
             Intent intent = new Intent(this, Score.class);
             intent.putExtra(SCORE_FINAL, score);
+            intent.putExtra(COMPTE, login);
             startActivityForResult(intent, QUESTION_REQUEST);
         } else {
             Button suivant = (Button) findViewById(R.id.suivant);
@@ -137,6 +135,7 @@ public class QuestionArt extends ActionBarActivity {
     public void retourMenu(View view) {
         Intent intent = new Intent(this, Jeux.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intent.putExtra(COMPTE, login);
         startActivity(intent);
     }
 

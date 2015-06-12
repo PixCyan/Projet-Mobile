@@ -7,17 +7,36 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import fr.pixcyan.android.raffennn.data.Compte;
+import fr.pixcyan.android.raffennn.data.DAOCompte;
 
 
 public class Score extends ActionBarActivity {
+    public static final String COMPTE = "compte";
+    private static final String SCORE_FINAL = "score";
     private int score = 0;
+    private DAOCompte daoCompte;
+    private Compte compte;
+    private String login;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_score);
-        score = getIntent().getIntExtra(Multiplication.FINAL_SCORE, 0);
+        Bundle extras = getIntent().getExtras();
+        score = extras.getInt(SCORE_FINAL);
+        login = extras.getString(COMPTE);
         TextView view1 = (TextView) findViewById(R.id.score);
         view1.setText("Score : " + score + "/10");
+        this.daoCompte = new DAOCompte(this);
+        final String login = getIntent().getStringExtra(Login.COMPTE);
+        if (login != null) {
+            this.daoCompte.open();
+            this.compte = this.daoCompte.getCompte(login);
+            this.daoCompte.close();
+        } else {
+            this.compte = null;
+        }
     }
 
 
@@ -46,6 +65,7 @@ public class Score extends ActionBarActivity {
     public void retourMenu(View view) {
         Intent intent = new Intent(this, Jeux.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intent.putExtra(COMPTE, login);
         startActivity(intent);
     }
 

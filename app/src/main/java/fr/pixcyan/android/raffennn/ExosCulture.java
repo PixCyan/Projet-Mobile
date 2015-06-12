@@ -73,6 +73,7 @@ public class ExosCulture extends ActionBarActivity {
     public void retourMenu(View view) {
         Intent intent = new Intent(this, Jeux.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intent.putExtra(COMPTE, login);
         startActivity(intent);
     }
 

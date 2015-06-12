@@ -41,7 +41,6 @@ public class PaysCapitale extends ActionBarActivity {
         } else {
             this.compte = null;
         }
-
         miseAJour();
     }
 
@@ -91,14 +90,17 @@ public class PaysCapitale extends ActionBarActivity {
         }
         if(count == 10) {
             if(compte != null) {
-                this.compte.setScore_capitales(score);
                 this.daoCompte.open();
+                this.compte.setScore_capitales(score);
                 this.daoCompte.update(this.compte);
                 this.daoCompte.close();
             }
             count = 0;
             Intent intent = new Intent(this, Score.class);
-            intent.putExtra(SCORE_FINAL, score);
+            Bundle extras = new Bundle();
+            extras.putInt(SCORE_FINAL,score);
+            extras.putString(COMPTE,login);
+            intent.putExtras(extras);
             startActivityForResult(intent, CAPITALE_REQUEST);
         } else {
             Button suivant = (Button) findViewById(R.id.suivant);
@@ -123,6 +125,7 @@ public class PaysCapitale extends ActionBarActivity {
     public void retourMenu(View view) {
         Intent intent = new Intent(this, Jeux.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intent.putExtra(COMPTE, login);
         startActivity(intent);
     }
 

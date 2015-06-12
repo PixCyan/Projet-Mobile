@@ -132,14 +132,15 @@ public class Multiplication extends ActionBarActivity {
                 miseAjour();
             } else {
                 if(compte != null) {
-                    this.compte.setScore_capitales(c.getScoreFinal());
                     this.daoCompte.open();
+                    this.compte.setScore_mult(c.getScoreFinal());
                     this.daoCompte.update(this.compte);
                     this.daoCompte.close();
                 }
                 nbCalc = 0;
                 Intent intent = new Intent(this, Score.class);
                 intent.putExtra(FINAL_SCORE, c.getScoreFinal());
+                intent.putExtra(COMPTE, login);
                 c.setScoreFinal(0);
                 startActivityForResult(intent, MULT_REQUEST);
             }
@@ -158,6 +159,7 @@ public class Multiplication extends ActionBarActivity {
     public void retourMenu(View view) {
         Intent intent = new Intent(this, Jeux.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intent.putExtra(COMPTE, login);
         startActivity(intent);
     }
 

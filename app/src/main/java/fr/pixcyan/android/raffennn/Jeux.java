@@ -65,7 +65,7 @@ public class Jeux extends ActionBarActivity {
     }
 
     public void mesScores(View view) {
-        Intent intent = new Intent(this, ExosCulture.class);
+        Intent intent = new Intent(this, MesScores.class);
         intent.putExtra(COMPTE, login);
         startActivityForResult(intent, CULTURE_REQUEST);
     }

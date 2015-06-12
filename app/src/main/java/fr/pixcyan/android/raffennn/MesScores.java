@@ -1,10 +1,15 @@
 package fr.pixcyan.android.raffennn;
 
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import fr.pixcyan.android.raffennn.data.Compte;
 import fr.pixcyan.android.raffennn.data.DAOCompte;
@@ -21,6 +26,7 @@ public class MesScores extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mes_scores);
         login = getIntent().getStringExtra(Login.COMPTE);
+        this.daoCompte = new DAOCompte(this);
         if (login != null) {
             this.daoCompte.open();
             this.compte = this.daoCompte.getCompte(login);
@@ -29,20 +35,23 @@ public class MesScores extends ActionBarActivity {
             this.compte = null;
         }
 
-        //Création dynamique
-        for(int i = 0; i < 4; i++) {
-            TextView table = new TextView(this);
-            table.setText(nb1 + " x " + nb2 + " = ");
-            table.setWidth(50);
-            table.setHeight(50);
-
-            EditText rep = new EditText(this);
-            rep.setText(" ? ");
-            rep.setLayoutParams(params);
-            rep.setTextSize(10);
-            layout.addView(table);
-            layout.addView(rep);
+        if(compte != null) {
+            TextView table1 = (TextView) findViewById(R.id.sMult);
+            table1.setText("Dernier score multiplication :" + compte.getScore_mult());
+            TextView table2 = (TextView) findViewById(R.id.sAdd);
+            table2.setText("Dernier score addition :" + compte.getScore_add());
+            TextView table3 = (TextView) findViewById(R.id.sArt);
+            table3.setText("Dernier score art :" + compte.getScore_art());
+            TextView table4 = (TextView) findViewById(R.id.sCap);
+            table4.setText("Dernier score capitales :" + compte.getScore_capitales());
+        } else {
+            final Context context = this;
+            AlertDialog.Builder builder = new AlertDialog.Builder(context);
+            builder.setMessage("Aucun résultats trouvés. Vous n'êtes pas connecté ou une erreur s'est produite.").setTitle("Oups !");
+            AlertDialog dialog = builder.create();
+            dialog.show();
         }
+
 
     }
 
@@ -65,7 +74,19 @@ public class MesScores extends ActionBarActivity {
         if (id == R.id.action_settings) {
             return true;
         }
-
         return super.onOptionsItemSelected(item);
+    }
+
+    public void retourMenu(View view) {
+        Intent intent = new Intent(this, Jeux.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intent.putExtra(COMPTE, login);
+        startActivity(intent);
+    }
+
+    public void quitter(View view) {
+        Intent intent = new Intent(this, MainActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
     }
 }

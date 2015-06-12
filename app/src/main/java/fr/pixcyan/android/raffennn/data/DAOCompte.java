@@ -102,11 +102,10 @@ public class DAOCompte extends DAOBase {
         values.put(SCORE_CULT_CAPITALES, compte.getScore_capitales());
 
         // Insertion de l'objet dans la BD via le ContentValues et l'identifiant
-        return getDB().update(TABLE_COMPTE, values, LOGIN + " = " + compte.getLogin(), null);
+        return getDB().update(TABLE_COMPTE, values, LOGIN + " = ?", new String[]{compte.getLogin()});
     }
 
     public int removeByLogin(String login) {
-
         //Suppression d'une question de la BD à partir du login
         return getDB().delete(TABLE_COMPTE, LOGIN + " = " + login, null);
     }
