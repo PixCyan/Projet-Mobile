@@ -14,10 +14,8 @@ public class DAOBase {
     // TAG pour le log
     private static final String TAG = "DBAdapter";
 
-    //
     private SQLiteDatabase db;
     private DBHelper databaseHelper;
-
 
     // refaire avec getWritableDatabase(); et getReadableDatabase();
     public DAOBase(Context context) {

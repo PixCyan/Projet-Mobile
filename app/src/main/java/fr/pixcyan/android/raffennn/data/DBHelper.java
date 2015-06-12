@@ -29,10 +29,12 @@ public class DBHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
 
         // Créer la table question
+        db.execSQL(DAOCapitale.DROP_TABLE);
         db.execSQL(DAOQuestion.DROP_TABLE);
-        //db.execSQL(DAOCompte.DROP_TABLE);
+        db.execSQL(DAOCompte.DROP_TABLE);
         db.execSQL(DAOQuestion.CREATE_TABLE);
         db.execSQL(DAOCompte.CREATE_TABLE);
+        db.execSQL(DAOCapitale.CREATE_TABLE);
 
         // Insérer les données
         for (String insertQ : DAOQuestion.getInsertSQL()) {
@@ -40,6 +42,9 @@ public class DBHelper extends SQLiteOpenHelper {
         }
         for (String insertC : DAOCompte.getInsertSQL()) {
             db.execSQL(insertC);
+        }
+        for (String insertCap : DAOCapitale.getInsertSQL()) {
+            db.execSQL(insertCap);
         }
 
     }
@@ -55,6 +60,7 @@ public class DBHelper extends SQLiteOpenHelper {
         // DROP
         db.execSQL(DAOCompte.DROP_TABLE);
         db.execSQL(DAOQuestion.DROP_TABLE);
+        db.execSQL(DAOCapitale.DROP_TABLE);
 
         // Relancer la création
         onCreate(db);

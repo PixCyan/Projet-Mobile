@@ -8,7 +8,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="fr.pixcyan.android.raffennn.MainActivity"
+            android:name=".MainActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -17,60 +17,68 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="fr.pixcyan.android.raffennn.Jeux"
+            android:name=".Jeux"
             android:label="@string/title_activity_jeux" >
         </activity>
         <activity
-            android:name="fr.pixcyan.android.raffennn.Login"
+            android:name=".Login"
             android:label="@string/title_activity_login" >
         </activity>
         <activity
-            android:name="fr.pixcyan.android.raffennn.Sinscrire"
+            android:name=".Sinscrire"
             android:label="@string/title_activity_sinscrire" >
         </activity>
         <activity
-            android:name="fr.pixcyan.android.raffennn.ExercicesMaths"
+            android:name=".ExercicesMaths"
             android:label="@string/title_activity_exercices_maths" >
         </activity>
         <activity
-            android:name="fr.pixcyan.android.raffennn.Addition"
+            android:name=".Addition"
             android:label="@string/title_activity_addition"
-            android:parentActivityName="fr.pixcyan.android.raffennn.ExercicesMaths" >
+            android:parentActivityName=".ExercicesMaths" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="fr.pixcyan.android.raffennn.ExercicesMaths" />
         </activity>
         <activity
-            android:name="fr.pixcyan.android.raffennn.Multiplication"
+            android:name=".Multiplication"
             android:label="@string/title_activity_multiplication"
-            android:parentActivityName="fr.pixcyan.android.raffennn.ExercicesMaths" >
+            android:parentActivityName=".ExercicesMaths" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="fr.pixcyan.android.raffennn.ExercicesMaths" />
         </activity>
         <activity
-            android:name="fr.pixcyan.android.raffennn.ExosCulture"
+            android:name=".ExosCulture"
             android:label="@string/title_activity_exos_culture" >
         </activity>
         <activity
-            android:name="fr.pixcyan.android.raffennn.ChoixTable"
+            android:name=".ChoixTable"
             android:label="@string/title_activity_choix_table" >
         </activity>
         <activity
-            android:name="fr.pixcyan.android.raffennn.Aleatoire"
+            android:name=".Aleatoire"
             android:label="@string/title_activity_aleatoire"
-            android:parentActivityName="fr.pixcyan.android.raffennn.ExercicesMaths" >
+            android:parentActivityName=".ExercicesMaths" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="fr.pixcyan.android.raffennn.ExercicesMaths" />
         </activity>
         <activity
-            android:name="fr.pixcyan.android.raffennn.Score"
+            android:name=".Score"
             android:label="@string/title_activity_score" >
         </activity>
         <activity
-            android:name="fr.pixcyan.android.raffennn.QuestionArt"
+            android:name=".QuestionArt"
             android:label="@string/title_activity_question_art" >
+        </activity>
+        <activity
+            android:name=".Capitale"
+            android:label="@string/title_activity_capitale" >
+        </activity>
+        <activity
+            android:name=".PaysCapitale"
+            android:label="@string/title_activity_pays_capitale" >
         </activity>
     </application>
 

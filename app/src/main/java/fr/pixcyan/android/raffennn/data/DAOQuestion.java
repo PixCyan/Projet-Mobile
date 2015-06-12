@@ -60,8 +60,6 @@ public class DAOQuestion extends DAOBase {
             liste[i] = insertSQL + "(" + questionReponse + ")";
             i++;
         }
-
-        //
         return liste;
     }
 

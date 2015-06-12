@@ -10,6 +10,7 @@ import android.view.View;
 
 public class ExosCulture extends ActionBarActivity {
     private  static final int ART_REQUEST = 0;
+    private  static final int CAP_REQUEST = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +38,11 @@ public class ExosCulture extends ActionBarActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public void capitale(View view) {
+        Intent intent = new Intent(this, PaysCapitale.class);
+        startActivityForResult(intent, CAP_REQUEST);
     }
 
     public void questionArt(View view) {

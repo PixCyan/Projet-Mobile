@@ -29,11 +29,11 @@ public class DAOCompte extends DAOBase {
     public static final String CREATE_TABLE =
             "CREATE TABLE " + TABLE_COMPTE + "(" +
                     LOGIN + " VARCHAR(20) PRIMARY KEY, " +
-                    MDP + " VARCHAR(15) NOT NULL, " +
-                    SCORE_MATHS_MULT + " NUMERIC(2) NOT NULL, " +
-                    SCORE_MATHS_ADD + " NUMERIC(2) NOT NULL, " +
-                    SCORE_CULT_ART + " NUMERIC(2) NOT NULL, " +
-                    SCORE_CULT_CAPITALES + " NUMERIC(2) NOT NULL); ";
+                    MDP + " VARCHAR(15), " +
+                    SCORE_MATHS_MULT + " NUMERIC(2), " +
+                    SCORE_MATHS_ADD + " NUMERIC(2), " +
+                    SCORE_CULT_ART + " NUMERIC(2), " +
+                    SCORE_CULT_CAPITALES + " NUMERIC(2)); ";
 
     // retourne une chaîne de caractères représentant une instruction SQL de création de la table compte
     public static final String DROP_TABLE = "DROP TABLE IF EXISTS " + TABLE_COMPTE + ";";

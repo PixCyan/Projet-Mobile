@@ -18,5 +18,7 @@
     <string name="title_activity_aleatoire">Aleatoire</string>
     <string name="title_activity_score">Score</string>
     <string name="title_activity_question_art">QuestionArt</string>
+    <string name="title_activity_capitale">Capitale</string>
+    <string name="title_activity_pays_capitale">PaysCapitale</string>
 
 </resources>
