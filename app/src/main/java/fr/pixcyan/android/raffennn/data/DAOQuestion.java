@@ -39,7 +39,7 @@ public class DAOQuestion extends DAOBase {
 
     // Données pour la table
     private static final String[] DATA = new String[]{
-            "'Qu'elle est la couleur du cheval bleu d'Henri IV ?', 'Bleu', 'Blanc', 'Noir'",
+            "'Qu''elle est la couleur du cheval bleu d''Henri IV ?', 'Bleu', 'Blanc', 'Noir'",
             "'Qui a peint la Joconde ?', 'Léonard de Vinci', 'Picasso', 'Van Gogh'",
             "'Quel est le vrai nom de Molière ?', 'Jean-Baptiste Poquelin','Jean-Claude Van Damme', 'Jean Dujardin'",
             "'Qui est Botticelli ?', 'Un peintre italien','Un célèbre inventeur italien', 'Un sculpteur italien'"};

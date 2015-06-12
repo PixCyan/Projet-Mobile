@@ -53,8 +53,7 @@ public class Sinscrire extends ActionBarActivity {
             Toast.makeText(this, "Un ou plusieurs chmaps sont vides", Toast.LENGTH_SHORT).show();
         } else {
             compteDAO.open();
-            //compteDAO.selectCompte(login.getText().toString(), mdp.getText().toString()).isEmpty()
-            if(compteDAO.compteExist(login.getText().toString())) {
+            if(!compteDAO.compteExiste(login.getText().toString())) {
                 Compte compte = new Compte(login.getText().toString(), mdp.getText().toString(), 0, 0, 0, 0);
                 compteDAO.insert(compte);
                 compteDAO.close();
@@ -65,8 +64,8 @@ public class Sinscrire extends ActionBarActivity {
             } else {
                 Toast.makeText(this, "Le compte existe déjà", Toast.LENGTH_SHORT).show();
             }
+            compteDAO.close();
         }
-        compteDAO.close();
     }
 
 

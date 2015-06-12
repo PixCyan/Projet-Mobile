@@ -3,6 +3,9 @@ package fr.pixcyan.android.raffennn.data;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDoneException;
+import android.database.sqlite.SQLiteStatement;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -120,12 +123,20 @@ public class DAOCompte extends DAOBase {
         return cursorToListCompte(cursor);
     }
 
-    public boolean compteExist(String login) {
-        Cursor cursor = getDB().rawQuery("SELECT * FROM " + TABLE_COMPTE + " WHERE "+ LOGIN +" = '"+ login +"'",  new String[]{login});
-        if(!cursor.moveToFirst()) {
+    public Compte getCompte(String login) {
+        final Cursor cursor = getDB().rawQuery("SELECT login FROM " + TABLE_COMPTE + " WHERE " + LOGIN + " = ?", new String[]{login});
+        return cursor.getCount() > 0 ? this.cursorToFirstCompte(cursor) : null;
+    }
+
+    public boolean compteExiste(String login) {
+        final SQLiteStatement req = getDB().compileStatement("SELECT login FROM " + TABLE_COMPTE + " WHERE " + LOGIN + " = ?");
+        req.bindString(1, login);
+        try {
+            req.simpleQueryForString();
+            return true;
+        } catch (final SQLiteDoneException e) {
             return false;
         }
-        return true;
     }
 
 

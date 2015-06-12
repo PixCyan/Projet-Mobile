@@ -76,15 +76,13 @@ public class PaysCapitale extends ActionBarActivity {
             startActivityForResult(intent, CAPITALE_REQUEST);
         } else {
             Button suivant = (Button) findViewById(R.id.suivant);
-            suivant.setVisibility(suivant.VISIBLE);
+            suivant.setVisibility(Button.VISIBLE);
         }
     }
 
     public void changerQuestion(View view) {
         Button suivant = (Button) findViewById(R.id.suivant);
-        suivant.setVisibility(suivant.INVISIBLE);
-        TextView textValidation = (TextView) findViewById(R.id.resultat);
-        textValidation.setText("");
+        suivant.setVisibility(Button.INVISIBLE);
         miseAJour();
     }
 

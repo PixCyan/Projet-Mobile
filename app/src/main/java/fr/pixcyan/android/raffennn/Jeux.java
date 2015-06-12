@@ -7,6 +7,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
+import fr.pixcyan.android.raffennn.data.Compte;
+import fr.pixcyan.android.raffennn.data.DAOCompte;
+import fr.pixcyan.android.raffennn.data.DBHelper;
 
 
 public class Jeux extends ActionBarActivity {

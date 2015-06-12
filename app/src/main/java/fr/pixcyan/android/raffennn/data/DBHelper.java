@@ -12,7 +12,7 @@ import android.util.Log;
  */
 public class DBHelper extends SQLiteOpenHelper {
     // VERSION de la bdd, permet les mises à jour des tables et champs au lancement de l'application
-    private static final int VERSION = 3;
+    private static final int VERSION = 4;
 
     // NOM de la base
     private static final String DATABASE_NAME = "database_test_dut_as";
@@ -28,10 +28,7 @@ public class DBHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
 
-        // Créer la table question
-        db.execSQL(DAOCapitale.DROP_TABLE);
-        db.execSQL(DAOQuestion.DROP_TABLE);
-        db.execSQL(DAOCompte.DROP_TABLE);
+        // Créer les tables
         db.execSQL(DAOQuestion.CREATE_TABLE);
         db.execSQL(DAOCompte.CREATE_TABLE);
         db.execSQL(DAOCapitale.CREATE_TABLE);
@@ -46,7 +43,6 @@ public class DBHelper extends SQLiteOpenHelper {
         for (String insertCap : DAOCapitale.getInsertSQL()) {
             db.execSQL(insertCap);
         }
-
     }
 
     @Override

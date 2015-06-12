@@ -14,6 +14,9 @@ import fr.pixcyan.android.raffennn.data.DAOCompte;
 
 public class Login extends ActionBarActivity {
 
+    public static final String COMPTE = "compte";
+    public final static int JEUX_REQUEST = 1;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,9 +54,20 @@ public class Login extends ActionBarActivity {
             Toast.makeText(this, "Un ou plusieurs chmaps sont vides", Toast.LENGTH_SHORT).show();
         } else {
             compteDAO.open();
-            //TODO
+            if (compteDAO.compteExiste(login.getText().toString())) {
+                final Compte compte = compteDAO.getCompte(login.getText().toString());
+                if (compte.getMdp().equals(mdp.getText().toString())) {
+                    Intent intent = new Intent(this, Jeux.class);
+                    intent.putExtra(COMPTE, compte.getLogin());
+                    startActivityForResult(intent, JEUX_REQUEST);
+                } else {
+                    Toast.makeText(this, "Mot de passe invalide", Toast.LENGTH_SHORT).show();
+                }
+            } else {
+                Toast.makeText(this, "Le compte n'existe pas", Toast.LENGTH_SHORT).show();
+            }
+            compteDAO.close();
         }
-        compteDAO.close();
     }
 
 

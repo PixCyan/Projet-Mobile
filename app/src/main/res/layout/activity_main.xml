@@ -19,7 +19,6 @@
         android:layout_above="@+id/button2"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="77dp"
-        android:focusable="false"
             />
 
     <Button

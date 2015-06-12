@@ -48,7 +48,8 @@ public class MainActivity extends ActionBarActivity {
 
     //TODO login()
     public void login(View view) {
-
+        Intent intent = new Intent(this, Login.class);
+        startActivityForResult(intent, LOGIN_REQUEST);
     }
 
     //TODO sinscrire()

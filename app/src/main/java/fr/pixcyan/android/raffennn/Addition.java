@@ -9,6 +9,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+import fr.pixcyan.android.raffennn.data.Compte;
+import fr.pixcyan.android.raffennn.data.DAOCompte;
 
 import java.util.Random;
 
@@ -22,10 +24,25 @@ public class Addition extends ActionBarActivity {
     private int nb2;
     private Calculs c;
 
+    private DAOCompte daoCompte;
+    private Compte compte;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_addition);
+
+        this.daoCompte = new DAOCompte(this);
+
+        final String login = getIntent().getStringExtra(Login.COMPTE);
+        if (login != null) {
+            this.daoCompte.open();
+            this.compte = this.daoCompte.getCompte(login);
+            this.daoCompte.close();
+        } else {
+            this.compte = null;
+        }
+
         miseAjour();
     }
 
@@ -79,6 +96,10 @@ public class Addition extends ActionBarActivity {
             if (nbCalc != 10) {
                 miseAjour();
             } else {
+                this.compte.setScore_add(c.getScoreFinal());
+                this.daoCompte.open();
+                this.daoCompte.update(this.compte);
+                this.daoCompte.close();
                 nbCalc = 0;
                 Intent intent = new Intent(this, Score.class);
                 intent.putExtra(FINAL_SCORE, c.getScoreFinal());
