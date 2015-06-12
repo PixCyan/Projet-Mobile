@@ -30,7 +30,9 @@ public class DBHelper extends SQLiteOpenHelper {
 
         // Créer la table question
         db.execSQL(DAOQuestion.DROP_TABLE);
+        //db.execSQL(DAOCompte.DROP_TABLE); A VOIR
         db.execSQL(DAOQuestion.CREATE_TABLE);
+        db.execSQL(DAOCompte.CREATE_TABLE);
 
         // Insérer les données
         for (String insert : DAOQuestion.getInsertSQL()) {
@@ -48,6 +50,7 @@ public class DBHelper extends SQLiteOpenHelper {
                 + newVersion + ", WHICH WILL DESTROY ALL OLD DATA !");
 
         // DROP
+        db.execSQL(DAOCompte.DROP_TABLE);
         db.execSQL(DAOQuestion.DROP_TABLE);
 
         // Relancer la création

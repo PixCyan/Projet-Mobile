@@ -1,9 +1,14 @@
 package fr.pixcyan.android.raffennn;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.EditText;
+import fr.pixcyan.android.raffennn.data.Compte;
+import fr.pixcyan.android.raffennn.data.DAOCompte;
 
 
 public class Sinscrire extends ActionBarActivity {
@@ -37,5 +42,48 @@ public class Sinscrire extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void valider() {
+        EditText login = (EditText) findViewById(R.id.login);
+        EditText mdp = (EditText) findViewById(R.id.mdp);
+        if(login == null || mdp == null) {
+            //TODO afficher message erreur
+        } else {
+            DAOCompte compteDAO = new DAOCompte(this);
+            compteDAO.open();
+            if(compteDAO.selectCompte(login.getText().toString(), mdp.getText().toString()).isEmpty()) {
+                Compte compte = new Compte(login.getText().toString(), mdp.getText().toString(), 0, 0, 0, 0);
+                compteDAO.insert(compte);
+            } else {
+                //TODO message erreur
+            }
+
+            compteDAO.close();
+
+            /*
+            DAOQuestion questionDAO = new DAOQuestion(this);
+        Question qTest = new Question("Quelle oeuvre a peint Jacques-Louis David ?", "Le serment du jeu de paume", "Les trois Grâces", "Le radeau de la Méduse");
+        questionDAO.open();
+        questionDAO.insert(qTest);
+
+        //Question question = questionDAO.selectAll().get(1);
+        Question question = questionDAO.getQuestionRandom();
+        questionView.setText(question.getQuestion());
+        bonneReponseView.setText(question.getBonneReponse());
+        mauvaiseReponse1.setText(question.getMauvaiseReponse1());
+        mauvaiseReponse2.setText(question.getMauvaiseReponse2());
+
+        questionDAO.close();
+             */
+        }
+
+    }
+
+
+    public void quitter(View view) {
+        Intent intent = new Intent(this, MainActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
     }
 }

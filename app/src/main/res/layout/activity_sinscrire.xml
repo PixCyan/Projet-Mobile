@@ -7,11 +7,11 @@
     tools:context="fr.pixcyan.android.raffennn.Sinscrire">
 
     <TextView
-        android:text="Remplir les champs ci-dessous : "
-        android:layout_width="wrap_content"
+        android:text="Remplir tous les champs :"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/text1"
-        android:textSize="20dp"/>
+        android:textSize="25dp"/>
 
     <TextView
             android:text="Login :"
@@ -27,11 +27,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/login"
-            android:layout_marginTop="103dp"
+            android:layout_marginTop="50dp"
+            android:width="150dp"
             android:layout_below="@+id/text1"
             android:layout_toRightOf="@+id/textLogin"
-            android:layout_toEndOf="@+id/textLogin"
-            android:width="150dp"/>
+            android:layout_toEndOf="@+id/textLogin"/>
 
     <TextView
             android:text="Mot de passe :"
@@ -52,6 +52,37 @@
             android:layout_toRightOf="@+id/textMDP"
             android:layout_toEndOf="@+id/textMDP"
             android:layout_marginTop="28dp"/>
+
+    <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imgAndroid"
+            android:background="@drawable/android"
+            android:layout_marginTop="34dp"
+            android:layout_below="@+id/textMDP"
+            android:layout_toLeftOf="@+id/mdp"
+            android:layout_toStartOf="@+id/mdp"/>
+
+    <Button
+            android:text="Valider"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="valider"
+            android:layout_alignTop="@+id/imgAndroid"
+            android:layout_toRightOf="@+id/imgAndroid"
+            android:layout_toEndOf="@+id/imgAndroid"
+            android:background="#ff88d879"/>
+
+    <Button
+            android:text="Quitter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="quitter"
+            android:id="@+id/boutonQuitter"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:background="#ff88d879"/>
 
 
 </RelativeLayout>

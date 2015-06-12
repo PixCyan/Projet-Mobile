@@ -121,11 +121,13 @@ public class DAOCompte extends DAOBase {
         return cursorToListCompte(cursor);
     }
 
+    public List<Compte> selectCompte(String login, String mdp) {
+        Cursor cursor = getDB().rawQuery("SELECT * FROM " + TABLE_COMPTE + "WHERE"+ LOGIN +"="+ login + "AND"+ MDP +"=" + mdp, null);
+        return cursorToListCompte(cursor);
+    }
+
     public Compte retrieveByID(int id) {
-
-        //Récupère dans un Cursor les valeur correspondant à une question contenu dans la BD à l'aide de son id
         Cursor cursor = getDB().rawQuery("SELECT * FROM " + TABLE_COMPTE + " WHERE " + COL_ID + "=?", new String[]{Integer.toString(id)});
-
         return cursorToFirstCompte(cursor);
     }
 

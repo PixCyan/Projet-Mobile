@@ -19,7 +19,7 @@ public class Compte {
 
     }
 
-    public Compte(int score_add, int score_mult, String mdp, String login, int score_art, int score_capitales) {
+    public Compte(String login, String mdp, int score_mult, int score_add, int score_art, int score_capitales) {
         this.score_add = score_add;
         this.score_mult = score_mult;
         this.mdp = mdp;
