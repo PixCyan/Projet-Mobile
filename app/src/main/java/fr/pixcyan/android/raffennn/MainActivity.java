@@ -42,10 +42,7 @@ public class MainActivity extends ActionBarActivity {
     }
 
     public void jeux(View view) {
-        // Création d'une intention
         Intent intent = new Intent(this, Jeux.class);
-
-        // Lancement de la demande de changement d'activité
         startActivityForResult(intent, JEUX_REQUEST);
     }
 

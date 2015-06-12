@@ -4,30 +4,40 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context="fr.pixcyan.android.raffennn.Jeux">
+    tools:context="fr.pixcyan.android.raffennn.Jeux"
+        >
 
     <TextView android:text="Quelle activité voulez-vous lancer ?"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/titre"
-        android:textSize="20dp" />
+        android:textSize="20dp"
+              android:textColor="#ff000000"/>
 
     <Button
         android:text="Mathématique"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/maths"
-        android:layout_below="@+id/titre"
-        android:onClick="exoMaths"/>
+        android:onClick="exoMaths"
+        android:background="#de5b77b2"
+        android:padding="10dp"
+        android:layout_centerVertical="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"/>
 
     <Button
         android:text="Culture générale"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/maths"
-        android:layout_below="@+id/titre"
         android:onClick="exoCulture"
-        android:width="800dp" />
+        android:background="#de5b77b2"
+        android:padding="10dp"
+        android:id="@+id/button"
+        android:layout_alignTop="@+id/maths"
+        android:layout_alignRight="@+id/boutonQuitter"
+        android:layout_alignEnd="@+id/boutonQuitter"/>
+
     <Button
             android:text="Quitter"
             android:layout_width="wrap_content"
@@ -36,7 +46,8 @@
             android:id="@+id/boutonQuitter"
             android:layout_alignTop="@+id/butouMenu"
             android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"/>
+            android:layout_alignParentEnd="true"
+            android:background="#de5b77b2"/>
 
     <Button
             android:text="Menu"
@@ -45,6 +56,7 @@
             android:onClick="retourMenu"
             android:id="@+id/butouMenu"
             android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"/>
+            android:layout_centerHorizontal="true"
+            android:background="#de5b77b2"/>
 
 </RelativeLayout>

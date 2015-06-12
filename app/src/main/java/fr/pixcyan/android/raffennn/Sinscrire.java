@@ -7,6 +7,8 @@ import android.view.MenuItem;
 
 
 public class Sinscrire extends ActionBarActivity {
+    private static final String LOGIN = "login";
+    private static final String MDP = "mot_de_passe";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
