@@ -48,17 +48,16 @@ public class Sinscrire extends ActionBarActivity {
     public void valider(View view) {
         EditText login = (EditText) findViewById(R.id.login);
         EditText mdp = (EditText) findViewById(R.id.mdp);
+        DAOCompte compteDAO = new DAOCompte(this);
         if(login.getText().toString().matches("")|| mdp.getText().toString().matches("")) {
             Toast.makeText(this, "Un ou plusieurs chmaps sont vides", Toast.LENGTH_SHORT).show();
         } else {
-            DAOCompte compteDAO = new DAOCompte(this);
             compteDAO.open();
             //compteDAO.selectCompte(login.getText().toString(), mdp.getText().toString()).isEmpty()
             if(compteDAO.compteExist(login.getText().toString())) {
                 Compte compte = new Compte(login.getText().toString(), mdp.getText().toString(), 0, 0, 0, 0);
                 compteDAO.insert(compte);
                 compteDAO.close();
-                //TODO message confirmation
                 Toast.makeText(this, "Le compte a été créé", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(this, MainActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -67,6 +66,7 @@ public class Sinscrire extends ActionBarActivity {
                 Toast.makeText(this, "Le compte existe déjà", Toast.LENGTH_SHORT).show();
             }
         }
+        compteDAO.close();
     }
 
 

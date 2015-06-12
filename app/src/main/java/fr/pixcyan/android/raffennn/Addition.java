@@ -8,6 +8,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Random;
 
@@ -65,22 +66,25 @@ public class Addition extends ActionBarActivity {
     public void valider(View view) {
         TextView view2 = (TextView) findViewById(R.id.rep);
         TextView v = (TextView) findViewById(R.id.test1);
-
-        if(c.compareRes(c.calculAdd(), Integer.parseInt(view2.getText().toString()))) {
-            c.scorePlus();
-            v.setText("Correct !");
+        if(view2.getText().toString().matches("")) {
+            Toast.makeText(this, "Vous n'avez pas rempli le champ", Toast.LENGTH_SHORT).show();
         } else {
-            v.setText("Incorrect !");
-        }
-        nbCalc++;
-        if(nbCalc != 10) {
-            miseAjour();
-        } else {
-            nbCalc = 0;
-            Intent intent = new Intent(this, Score.class);
-            intent.putExtra(FINAL_SCORE, c.getScoreFinal());
-            c.setScoreFinal(0);
-            startActivityForResult(intent, ADD_REQUEST);
+            if (c.compareRes(c.calculAdd(), Integer.parseInt(view2.getText().toString()))) {
+                c.scorePlus();
+                v.setText("Correct !");
+            } else {
+                v.setText("Incorrect !");
+            }
+            nbCalc++;
+            if (nbCalc != 10) {
+                miseAjour();
+            } else {
+                nbCalc = 0;
+                Intent intent = new Intent(this, Score.class);
+                intent.putExtra(FINAL_SCORE, c.getScoreFinal());
+                c.setScoreFinal(0);
+                startActivityForResult(intent, ADD_REQUEST);
+            }
         }
     }
 

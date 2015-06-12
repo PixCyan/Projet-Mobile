@@ -1,9 +1,15 @@
 package fr.pixcyan.android.raffennn;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.Toast;
+import fr.pixcyan.android.raffennn.data.Compte;
+import fr.pixcyan.android.raffennn.data.DAOCompte;
 
 
 public class Login extends ActionBarActivity {
@@ -35,5 +41,25 @@ public class Login extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void valider(View view) {
+        EditText login = (EditText) findViewById(R.id.login);
+        EditText mdp = (EditText) findViewById(R.id.mdp);
+        DAOCompte compteDAO = new DAOCompte(this);
+        if(login.getText().toString().matches("")|| mdp.getText().toString().matches("")) {
+            Toast.makeText(this, "Un ou plusieurs chmaps sont vides", Toast.LENGTH_SHORT).show();
+        } else {
+            compteDAO.open();
+            //TODO
+        }
+        compteDAO.close();
+    }
+
+
+    public void quitter(View view) {
+        Intent intent = new Intent(this, MainActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
     }
 }

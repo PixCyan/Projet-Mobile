@@ -71,12 +71,6 @@ public class Jeux extends ActionBarActivity {
         startActivityForResult(intent, CULTURE_REQUEST);
     }
 
-    public void retourMenu(View view) {
-        Intent intent = new Intent(this, Jeux.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        startActivity(intent);
-    }
-
     public void quitter(View view) {
         Intent intent = new Intent(this, MainActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);

@@ -63,12 +63,11 @@ public class PaysCapitale extends ActionBarActivity {
     public void valider(View view) {
         count++;
         EditText cap = (EditText) findViewById(R.id.capitale);
-        TextView correction = (TextView) findViewById(R.id.correction);
         if(cap.getText().toString().equals(repJuste)) {
-            correction.setText("Bravo !");
+            Toast.makeText(this, "Bravo", Toast.LENGTH_SHORT).show();
             score++;
         } else {
-            correction.setText("Perdu !");
+            Toast.makeText(this, "Perdu", Toast.LENGTH_SHORT).show();
         }
         if(count == 10) {
             count = 0;

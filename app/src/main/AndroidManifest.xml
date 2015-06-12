@@ -73,10 +73,6 @@
             android:label="@string/title_activity_question_art" >
         </activity>
         <activity
-            android:name=".Capitale"
-            android:label="@string/title_activity_capitale" >
-        </activity>
-        <activity
             android:name=".PaysCapitale"
             android:label="@string/title_activity_pays_capitale" >
         </activity>

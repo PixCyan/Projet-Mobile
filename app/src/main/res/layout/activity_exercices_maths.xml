@@ -11,34 +11,46 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/text"
-        android:textSize="20dp" />
+        android:textSize="25dp" />
 
-    <Button
-        android:text="Additions"
+    <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/additions"
+        android:onClick="additions"
+        android:background="@drawable/addition"
         android:layout_below="@+id/text"
-        android:layout_centerHorizontal="true"
-        android:onClick="additions"/>
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="31dp"
+        android:layout_marginStart="31dp"
+        android:layout_marginTop="28dp"
+        android:clickable="true"/>
 
-    <Button
-        android:text="Multiplications"
+    <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/multiplications"
-        android:layout_below="@+id/additions"
-        android:layout_centerHorizontal="true"
-        android:onClick="multiplications"/>
+        android:onClick="multiplications"
+        android:background="@drawable/multiplication"
+        android:layout_alignTop="@+id/additions"
+        android:layout_toRightOf="@+id/additions"
+        android:layout_toEndOf="@+id/additions"
+        android:layout_marginLeft="32dp"
+        android:layout_marginStart="32dp"
+        android:clickable="true"/>
 
-    <Button
-        android:text="Aléatoire"
+    <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/aleatoire"
-        android:layout_below="@+id/multiplications"
+        android:onClick="aleatoire"
+        android:enabled="false"
+        android:background="@drawable/caclulatrice"
+        android:layout_below="@+id/additions"
         android:layout_centerHorizontal="true"
-        android:onClick="aleatoire"/>
+        android:layout_marginTop="61dp"
+        android:clickable="true"/>
 
     <Button
             android:text="Quitter"
