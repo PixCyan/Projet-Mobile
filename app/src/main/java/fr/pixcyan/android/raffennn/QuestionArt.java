@@ -14,16 +14,22 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import fr.pixcyan.android.raffennn.data.*;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
 public class QuestionArt extends ActionBarActivity {
     public static final String COMPTE = "compte";
     private static final String SCORE_FINAL = "score";
     private static final int QUESTION_REQUEST = 0;
+    private static final Random rand = new Random();
     private String login;
     private int score = 0;
     private int count = 0;
 
     private DAOCompte daoCompte;
     private Compte compte;
+    private Question question;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,21 +76,23 @@ public class QuestionArt extends ActionBarActivity {
 
     public void miseAJour() {
 
-        TextView questionView = (TextView)findViewById(R.id.question);
-        RadioButton bonneReponseView = (RadioButton)findViewById(R.id.bonne_reponse);
-        RadioButton mauvaiseReponse1 = (RadioButton)findViewById(R.id.mauvaise_reponse_1);
-        RadioButton mauvaiseReponse2 = (RadioButton)findViewById(R.id.mauvaise_reponse_2);
+        ((RadioGroup)findViewById(R.id.rg)).clearCheck();
+
+        List<RadioButton> buttons = new ArrayList<>(3);
+        buttons.add((RadioButton)findViewById(R.id.rep1));
+        buttons.add((RadioButton)findViewById(R.id.rep2));
+        buttons.add((RadioButton) findViewById(R.id.rep3));
 
         DAOQuestion questionDAO = new DAOQuestion(this);
         questionDAO.open();
-
-        Question question = questionDAO.getQuestionRandom();
-        questionView.setText(question.getQuestion());
-        bonneReponseView.setText(question.getBonneReponse());
-        mauvaiseReponse1.setText(question.getMauvaiseReponse1());
-        mauvaiseReponse2.setText(question.getMauvaiseReponse2());
-
+        question = questionDAO.getQuestionRandom();
         questionDAO.close();
+
+        TextView questionView = (TextView)findViewById(R.id.question);
+        questionView.setText(question.getQuestion());
+        for (int i = 0; i < 3; i++) {
+            buttons.remove(rand.nextInt(buttons.size())).setText(question.getReponse(i));
+        }
     }
 
 
@@ -99,8 +107,9 @@ public class QuestionArt extends ActionBarActivity {
     public void valider(View view) {
         count++;
         TextView textValidation = (TextView) findViewById(R.id.resultat);
-        RadioGroup radioGroup = (RadioGroup) findViewById(R.id.rb);
-        if(radioGroup.getCheckedRadioButtonId() == R.id.bonne_reponse) {
+        RadioGroup radioGroup = (RadioGroup) findViewById(R.id.rg);
+        String checkedButtonValue = ((RadioButton)findViewById(radioGroup.getCheckedRadioButtonId())).getText().toString();
+        if(question.getBonneReponse().equals(checkedButtonValue)) {
             textValidation.setText("Bravo !");
             score++;
         } else {
@@ -120,7 +129,7 @@ public class QuestionArt extends ActionBarActivity {
             startActivityForResult(intent, QUESTION_REQUEST);
         } else {
             Button suivant = (Button) findViewById(R.id.suivant);
-            suivant.setVisibility(suivant.VISIBLE);
+            suivant.setVisibility(Button.VISIBLE);
         }
     }
 

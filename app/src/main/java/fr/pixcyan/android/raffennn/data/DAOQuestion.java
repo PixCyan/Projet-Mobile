@@ -75,8 +75,8 @@ public class DAOQuestion extends DAOBase {
         // Ajout clé/valeur : colonne/valeur
         values.put(COL_QUESTION, question.getQuestion());
         values.put(COL_BONNE_REPONSE, question.getBonneReponse());
-        values.put(COL_MAUVAISE_REPONSE_1, question.getMauvaiseReponse1());
-        values.put(COL_MAUVAISE_REPONSE_2, question.getMauvaiseReponse2());
+        values.put(COL_MAUVAISE_REPONSE_1, question.getReponse(1));
+        values.put(COL_MAUVAISE_REPONSE_2, question.getReponse(2));
 
         // Insertion de l'objet dans la BD via le ContentValues
         return getDB().insert(TABLE_QUESTION_REPONSE, null, values);
@@ -90,8 +90,8 @@ public class DAOQuestion extends DAOBase {
         // Ajout clé/valeur : colonne/valeur
         values.put(COL_QUESTION, question.getQuestion());
         values.put(COL_BONNE_REPONSE, question.getBonneReponse());
-        values.put(COL_MAUVAISE_REPONSE_1, question.getMauvaiseReponse1());
-        values.put(COL_MAUVAISE_REPONSE_2, question.getMauvaiseReponse2());
+        values.put(COL_MAUVAISE_REPONSE_1, question.getReponse(1));
+        values.put(COL_MAUVAISE_REPONSE_2, question.getReponse(2));
 
         // Insertion de l'objet dans la BD via le ContentValues et l'identifiant
         return getDB().update(TABLE_QUESTION_REPONSE, values, COL_ID + " = " + question.getId(), null);
@@ -152,9 +152,9 @@ public class DAOQuestion extends DAOBase {
             Question question = new Question();
             question.setId(cursor.getInt(indexId));
             question.setQuestion(cursor.getString(indexQuestion));
-            question.setBonneReponse(cursor.getString(indexBonneReponse));
-            question.setMauvaiseReponse1(cursor.getString(indexMauvaiseReponse1));
-            question.setMauvaiseReponse2(cursor.getString(indexMauvaiseReponse2));
+            question.setReponse(0, cursor.getString(indexBonneReponse));
+            question.setReponse(1, cursor.getString(indexMauvaiseReponse1));
+            question.setReponse(2, cursor.getString(indexMauvaiseReponse2));
 
             // Ajout dans la liste
             liste.add(question);
@@ -189,9 +189,9 @@ public class DAOQuestion extends DAOBase {
             question = new Question();
             question.setId(cursor.getInt(indexId));
             question.setQuestion(cursor.getString(indexQuestion));
-            question.setBonneReponse(cursor.getString(indexBonneReponse));
-            question.setMauvaiseReponse1(cursor.getString(indexMauvaiseReponse1));
-            question.setMauvaiseReponse2(cursor.getString(indexMauvaiseReponse2));
+            question.setReponse(0, cursor.getString(indexBonneReponse));
+            question.setReponse(1, cursor.getString(indexMauvaiseReponse1));
+            question.setReponse(2, cursor.getString(indexMauvaiseReponse2));
 
         }
 

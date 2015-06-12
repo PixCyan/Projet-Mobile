@@ -9,19 +9,19 @@ public class Question {
 
     private int id;
     private String question;
-    private String bonneReponse;
-    private String mauvaiseReponse1;
-    private String mauvaiseReponse2;
+    private String[] reponses;
 
     public Question() {
-
+        this.reponses = new String[3];
     }
 
     public Question(String question, String bonneReponse, String mauvaiseReponse1, String mauvaiseReponse2) {
         this.setQuestion(question);
-        this.setBonneReponse(bonneReponse);
-        this.setMauvaiseReponse1(mauvaiseReponse1);
-        this.setMauvaiseReponse2(mauvaiseReponse2);
+        this.reponses = new String[]{
+                bonneReponse,
+                mauvaiseReponse1,
+                mauvaiseReponse2
+        };
     }
 
     public int getId() {
@@ -37,15 +37,14 @@ public class Question {
     }
 
     public String getBonneReponse() {
-        return bonneReponse;
+        return reponses[0];
     }
 
-    public String getMauvaiseReponse1() {
-        return mauvaiseReponse1;
-    }
-
-    public String getMauvaiseReponse2() {
-        return mauvaiseReponse2;
+    public String getReponse(int i) {
+        if (i < 0 || i >= reponses.length) {
+            throw new IllegalArgumentException("Invalid response index: " + i);
+        }
+        return reponses[i];
     }
 
 
@@ -53,15 +52,10 @@ public class Question {
         this.question = question;
     }
 
-    public void setBonneReponse(String bonneReponse) {
-        this.bonneReponse = bonneReponse;
-    }
-
-    public void setMauvaiseReponse1(String mauvaiseReponse1) {
-        this.mauvaiseReponse1 = mauvaiseReponse1;
-    }
-
-    public void setMauvaiseReponse2(String mauvaiseReponse2) {
-        this.mauvaiseReponse2 = mauvaiseReponse2;
+    public void setReponse(int i, String value) {
+        if (i < 0 || i >= reponses.length) {
+            throw new IllegalArgumentException("Invalid response index: " + i);
+        }
+        reponses[i] = value;
     }
 }

@@ -28,26 +28,23 @@
     <RadioGroup
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/rb"
+            android:id="@+id/rg"
             android:layout_below="@+id/question">
 
         <RadioButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/bonne_reponse"
-                android:layout_below="@+id/question"/>
+                android:id="@+id/rep1"/>
 
         <RadioButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/mauvaise_reponse_1"
-                android:layout_below="@+id/bonne_reponse"/>
+                android:id="@+id/rep2"/>
 
         <RadioButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/mauvaise_reponse_2"
-                android:layout_below="@+id/mauvaise_reponse_1"/>
+                android:id="@+id/rep3"/>
     </RadioGroup>
 
     <Button
@@ -56,7 +53,7 @@
             android:layout_height="wrap_content"
             android:onClick="valider"
             android:id="@+id/valider"
-            android:layout_below="@+id/rb"/>
+            android:layout_below="@+id/rg"/>
 
     <Button
             android:text="Question suivante =>"
@@ -65,7 +62,7 @@
             android:onClick="changerQuestion"
             android:id="@+id/suivant"
             android:layout_toRightOf="@+id/valider"
-            android:layout_below="@+id/rb"/>
+            android:layout_below="@+id/rg"/>
 
     <TextView
             android:text=""
