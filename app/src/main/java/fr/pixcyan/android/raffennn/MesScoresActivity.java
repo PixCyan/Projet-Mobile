@@ -35,13 +35,13 @@ public class MesScoresActivity extends ActionBarActivity {
 
         if(compte != null) {
             TextView table1 = (TextView) findViewById(R.id.sMult);
-            table1.setText("Dernier score multiplication :" + compte.getScore_mult());
+            table1.setText("Multiplication :" + compte.getScore_mult());
             TextView table2 = (TextView) findViewById(R.id.sAdd);
-            table2.setText("Dernier score addition :" + compte.getScore_add());
+            table2.setText("Addition :" + compte.getScore_add());
             TextView table3 = (TextView) findViewById(R.id.sArt);
-            table3.setText("Dernier score art :" + compte.getScore_art());
+            table3.setText("Art :" + compte.getScore_art());
             TextView table4 = (TextView) findViewById(R.id.sCap);
-            table4.setText("Dernier score capitales :" + compte.getScore_capitales());
+            table4.setText("Capitales :" + compte.getScore_capitales());
         } else {
             final Context context = this;
             AlertDialog.Builder builder = new AlertDialog.Builder(context);
